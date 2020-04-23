@@ -3,15 +3,27 @@ package Objects;
 import java.awt.*;
 
 public abstract class Object3D {
-    private Vector3D origin;
+    private Vector3D position;
     private Color color;
 
-    public Vector3D getOrigin() {
-        return origin;
+    /**
+     * Object3D constructor
+     * @param position
+     * @param color
+     */
+    public Object3D(Vector3D position, Color color) {
+        setPosition(position);
+        setColor(color);
     }
 
-    public void setOrigin(Vector3D origin) {
-        this.origin = origin;
+    //Getters & Setters
+
+    public Vector3D getPosition() {
+        return position;
+    }
+
+    public void setPosition(Vector3D origin) {
+        this.position = origin;
     }
 
     public Color getColor() {
@@ -20,10 +32,5 @@ public abstract class Object3D {
 
     public void setColor(Color color) {
         this.color = color;
-    }
-
-    public Object3D(Vector3D origin, Color color) {
-        setOrigin(origin);
-        setColor(color);
     }
 }

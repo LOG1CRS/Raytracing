@@ -4,9 +4,20 @@ import java.awt.*;
 
 public class Sphere extends Object3D{
 
-    private Vector3D origin;
     private float radius;
-    private Color color;
+
+    /**
+     * Sphere constructor
+     * @param origin
+     * @param radius
+     * @param color
+     */
+    public Sphere(Vector3D origin, float radius, Color color) {
+        super(origin, color);
+        setRadius(radius);
+    }
+
+    //Getters & Setters
 
     public float getRadius() {
         return radius;
@@ -16,8 +27,5 @@ public class Sphere extends Object3D{
         this.radius = radius;
     }
 
-    public Sphere(Vector3D origin, float radius, Color color) {
-        super(origin, color);
-        setRadius(radius);
-    }
+
 }
