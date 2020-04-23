@@ -1,4 +1,4 @@
-import Tools.Vector3D;
+package Main;
 
 /**
  * Ray tracing code
@@ -8,8 +8,6 @@ import Tools.Vector3D;
  */
 public class Main {
     public static void main(String[] args) {
-        Vector3D vector = new Vector3D(15.0, 7.0, 1.0);
-
-        System.out.println(vector);
+        Raytracer.StartRaytracer();
     }
 }

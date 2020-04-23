@@ -3,12 +3,11 @@ package Tools;
 import Objects.Object3D;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Scene {
     private Camera camera;
-    private List<Object3D> objects;
+    private ArrayList<Object3D> objects;
 
     /**
      * Scene constructor
@@ -28,16 +27,16 @@ public class Scene {
         this.camera = camera;
     }
 
-    public List<Object3D> getObjects() {
+    public ArrayList<Object3D> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Object3D> objects) {
+    public void setObjects(ArrayList<Object3D> objects) {
         this.objects = objects;
     }
 
     /**
-     * Add object to scene
+     * Adds object to scene
      * @param object
      */
     public void addObject(Object3D object){

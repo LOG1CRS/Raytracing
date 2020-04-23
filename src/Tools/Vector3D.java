@@ -124,7 +124,7 @@ public class Vector3D {
     }
 
     /**
-     * Clone the vector that is calling this function to keep separate references in memory
+     * Clones the vector that is calling this function to keep separate references in memory
      * @return Tools.Vector3D
      */
     public Vector3D cloneVector(){
@@ -132,7 +132,7 @@ public class Vector3D {
     }
 
     /**
-     * Return a vector zero
+     * Returns a vector zero
      * @return ZERO
      */
     public static Vector3D ZERO(){
