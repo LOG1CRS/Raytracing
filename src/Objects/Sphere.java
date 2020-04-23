@@ -1,5 +1,7 @@
 package Objects;
 
+import Tools.Vector3D;
+
 import java.awt.*;
 
 public class Sphere extends Object3D{

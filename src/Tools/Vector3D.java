@@ -1,8 +1,8 @@
-package Objects;
+package Tools;
 
 /**
- * Vector3D, this class contains mathematical functions to be able to use with the vectors
- * A Vector3D can be a dot in space or directional vector
+ * Tools.Vector3D, this class contains mathematical functions to be able to use with the vectors
+ * A Tools.Vector3D can be a dot in space or directional vector
  */
 public class Vector3D {
 
@@ -13,7 +13,7 @@ public class Vector3D {
     private double z;
 
     /**
-     * Vector3D constructor
+     * Tools.Vector3D constructor
      * @param x
      * @param y
      * @param z
@@ -64,7 +64,7 @@ public class Vector3D {
      * Cross product of two vectors
      * @param vectorA
      * @param vectorB
-     * @return Vector3D
+     * @return Tools.Vector3D
      */
     public static Vector3D crossProduct(Vector3D vectorA, Vector3D vectorB){
         return new Vector3D(
@@ -87,7 +87,7 @@ public class Vector3D {
      * Sum of two vectors
      * @param vectorA
      * @param vectorB
-     * @return Vector3D
+     * @return Tools.Vector3D
      */
     public static Vector3D sum(Vector3D vectorA, Vector3D vectorB){
         return new Vector3D(vectorA.getX() + vectorB.getX(), vectorA.getY() + vectorB.getY(), vectorA.getZ() + vectorB.getZ());
@@ -97,7 +97,7 @@ public class Vector3D {
      * Subtraction of two vectors
      * @param vectorA
      * @param vectorB
-     * @return Vector3D
+     * @return Tools.Vector3D
      */
     public static Vector3D subtraction(Vector3D vectorA, Vector3D vectorB){
         return new Vector3D(vectorA.getX() - vectorB.getX(), vectorA.getY() - vectorB.getY(), vectorA.getZ() - vectorB.getZ());
@@ -106,7 +106,7 @@ public class Vector3D {
     /**
      * Normalization of a vector
      * @param vectorA
-     * @return Vector3D
+     * @return Tools.Vector3D
      */
     public static Vector3D normalize(Vector3D vectorA){
         double magnitude = Vector3D.magnitude(vectorA);
@@ -117,7 +117,7 @@ public class Vector3D {
      * Multiply a vector by a scalar
      * @param vectorA
      * @param scalar
-     * @return Vector3D
+     * @return Tools.Vector3D
      */
     public static Vector3D scalarMultiplication(Vector3D vectorA, double scalar){
         return new Vector3D(vectorA.getX() * scalar, vectorA.getY() * scalar, vectorA.getY() * scalar);
@@ -125,9 +125,9 @@ public class Vector3D {
 
     /**
      * Clone the vector that is calling this function to keep separate references in memory
-     * @return Vector3D
+     * @return Tools.Vector3D
      */
-    public Vector3D clone(){
+    public Vector3D cloneVector(){
         return new Vector3D(getX(), getY(), getZ());
     }
 
@@ -136,7 +136,7 @@ public class Vector3D {
      * @return ZERO
      */
     public static Vector3D ZERO(){
-        return ZERO.clone();
+        return ZERO.cloneVector();
     }
 
     @Override

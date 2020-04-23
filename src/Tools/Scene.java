@@ -1,4 +1,6 @@
-package Objects;
+package Tools;
+
+import Objects.Object3D;
 
 import java.util.List;
 

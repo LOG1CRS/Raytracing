@@ -1,4 +1,4 @@
-import Objects.Vector3D;
+import Tools.Vector3D;
 
 /**
  * Ray tracing code

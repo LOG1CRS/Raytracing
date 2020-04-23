@@ -1,5 +1,7 @@
 package Objects;
 
+import Tools.Vector3D;
+
 import java.awt.*;
 
 public abstract class Object3D {
@@ -22,8 +24,8 @@ public abstract class Object3D {
         return position;
     }
 
-    public void setPosition(Vector3D origin) {
-        this.position = origin;
+    public void setPosition(Vector3D position) {
+        this.position = position;
     }
 
     public Color getColor() {
