@@ -1,5 +1,7 @@
 package Objects;
 
+import Tools.Intersection;
+import Tools.Ray;
 import Tools.Vector3D;
 
 import java.awt.*;
@@ -35,4 +37,11 @@ public abstract class Object3D {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    /**
+     * Abstract function to return an intersection
+     * @param ray
+     * @return Intersection
+     */
+    public abstract Intersection getIntersection(Ray ray);
 }

@@ -2,23 +2,37 @@ package Main;
 
 import Objects.Object3D;
 import Objects.Sphere;
-import Tools.Camera;
-import Tools.Ray;
-import Tools.Scene;
-import Tools.Vector3D;
+import Tools.*;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Raytracer {
     /**
      * Starts the Raytracer and initializes a scene
      */
     public static void StartRaytracer(){
+        System.out.println(new Date());
+
         Scene scene01 = new Scene();
-        scene01.setCamera(new Camera(new Vector3D(0.0,0.0,-8.0), 160, 160, 800, 800));
-        scene01.addObject(new Sphere(new Vector3D(0,1,5), 0.5f, Color.RED));
+        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800));
+        scene01.addObject(new Sphere(new Vector3D(0, 1, 5), 0.5f, Color.RED));
+        scene01.addObject(new Sphere(new Vector3D(2, 1, 2), 0.5f, Color.BLUE));
+
+        BufferedImage image = raytrace(scene01);
+        File outputImage = new File("image.png");
+        try{
+            ImageIO.write(image, "png", outputImage);
+        } catch (IOException ioe){
+            System.out.println("Something failed");
+        }
+
+        System.out.println(new Date());
     }
 
     /**
@@ -26,23 +40,56 @@ public class Raytracer {
      * @param scene
      * @return BufferedImage
      */
-    public static BufferedImage raytrace(Scene scene){
+    public static BufferedImage raytrace(Scene scene) {
         Camera mainCamera = scene.getCamera();
         BufferedImage image = new BufferedImage(mainCamera.getResolutionWidth(), mainCamera.getResolutionHeight(), BufferedImage.TYPE_INT_RGB);
         ArrayList<Object3D> objects = scene.getObjects();
 
-        //Calculates the position of each ray in each pixels in the mesh
         Vector3D[][] positionsToRaytrace = mainCamera.calculatePositionsToRay();
-        for(int i = 0; i<positionsToRaytrace.length; i++){
-            for(int j = 0; j<positionsToRaytrace[i].length; j++){
+        for (int i = 0; i < positionsToRaytrace.length; i++) {
+            for (int j = 0; j < positionsToRaytrace[i].length; j++) {
                 double x = positionsToRaytrace[i][j].getX() + mainCamera.getPosition().getX();
-                double y = positionsToRaytrace[i][j].getX() + mainCamera.getPosition().getY();
-                double z = positionsToRaytrace[i][j].getX() + mainCamera.getPosition().getZ();
+                double y = positionsToRaytrace[i][j].getY() + mainCamera.getPosition().getY();
+                double z = positionsToRaytrace[i][j].getZ() + mainCamera.getPosition().getZ();
 
                 Ray ray = new Ray(mainCamera.getPosition(), new Vector3D(x, y, z));
+                Intersection closestIntersection = raycast(ray, objects, null);
+
+                //Background color
+                Color pixelColor = Color.WHITE;
+                if(closestIntersection != null){
+                    pixelColor = closestIntersection.getObject().getColor();
+                }
+                image.setRGB(i, j, pixelColor.getRGB());
             }
         }
 
         return image;
+    }
+
+    /**
+     * raycaset checks what is the closest intersection, object by object
+     * @param ray
+     * @param objects
+     * @param caster
+     * @return intersection
+     */
+    public static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster){
+        Intersection closestIntersection = null;
+
+        for(int k = 0; k < objects.size(); k++){
+            Object3D currentObj = objects.get(k);
+            if(caster == null || !currentObj.equals(caster)){
+                Intersection intersection = currentObj.getIntersection(ray);
+                if(intersection != null){
+                    double distance = intersection.getDistance();
+                    if(distance >= 0 && (closestIntersection == null || distance < closestIntersection.getDistance())){
+                        closestIntersection = intersection;
+                    }
+                }
+            }
+        }
+
+        return closestIntersection;
     }
 }

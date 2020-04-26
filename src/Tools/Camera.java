@@ -108,4 +108,9 @@ public class Camera extends Object3D {
 
         return positions;
     }
+
+    @Override
+    public Intersection getIntersection(Ray ray) {
+        return new Intersection(Vector3D.ZERO(), -1, Vector3D.ZERO(), null);
+    }
 }

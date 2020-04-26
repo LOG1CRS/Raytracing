@@ -13,7 +13,7 @@ public class Vector3D {
     private double z;
 
     /**
-     * Tools.Vector3D constructor
+     * Vector3D constructor
      * @param x
      * @param y
      * @param z
