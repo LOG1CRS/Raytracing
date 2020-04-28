@@ -19,10 +19,10 @@ public class Raytracer {
     public static void StartRaytracer(){
         System.out.println(new Date());
 
-        Scene scene01 = new Scene();
-        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800));
-        scene01.addObject(new Sphere(new Vector3D(0, 1, 5), 0.5f, Color.RED));
-        scene01.addObject(new Sphere(new Vector3D(2, 1, 2), 0.5f, Color.BLUE));
+        Scene scene01 = new Scene(8.0f,17.0f);
+        scene01.setCamera(new Camera(new Vector3D(0, 0, 0), 160, 160, 800, 800));
+        scene01.addObject(new Sphere(new Vector3D(0, 0, 14), 0.5f, Color.RED));
+        scene01.addObject(new Sphere(new Vector3D(2, 2, 18), 0.5f, Color.BLUE));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
@@ -57,8 +57,10 @@ public class Raytracer {
 
                 //Background color
                 Color pixelColor = Color.WHITE;
-                if(closestIntersection != null){
+
+                if(closestIntersection != null && closestIntersection.getDistance() >= scene.getClippingPlaneNear() && closestIntersection.getDistance() <= scene.getClippingPlaneFar()){
                     pixelColor = closestIntersection.getObject().getColor();
+                    System.out.println(closestIntersection.getDistance());
                 }
                 image.setRGB(i, j, pixelColor.getRGB());
             }

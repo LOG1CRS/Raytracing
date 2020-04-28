@@ -8,13 +8,19 @@ import java.util.ArrayList;
 public class Scene {
     private Camera camera;
     private ArrayList<Object3D> objects;
+    private double clippingPlaneNear;
+    private double clippingPlaneFar;
 
     /**
      * Scene constructor
      * Initialize the ArrayList of objects.
+     * @param clippingPlaneNear
+     * @param clippingPlaneFar
      */
-    public Scene(){
+    public Scene(double clippingPlaneNear, double clippingPlaneFar) {
         setObjects(new ArrayList<Object3D>());
+        setClippingPlaneNear(clippingPlaneNear);
+        setClippingPlaneFar(clippingPlaneFar);
     }
 
     //Getters & Setters
@@ -33,6 +39,22 @@ public class Scene {
 
     public void setObjects(ArrayList<Object3D> objects) {
         this.objects = objects;
+    }
+
+    public double getClippingPlaneNear() {
+        return clippingPlaneNear;
+    }
+
+    public void setClippingPlaneNear(double clippingPlaneNear) {
+        this.clippingPlaneNear = clippingPlaneNear;
+    }
+
+    public double getClippingPlaneFar() {
+        return clippingPlaneFar;
+    }
+
+    public void setClippingPlaneFar(double clippingPlaneFar) {
+        this.clippingPlaneFar = clippingPlaneFar;
     }
 
     /**
