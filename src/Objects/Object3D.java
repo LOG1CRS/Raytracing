@@ -1,12 +1,13 @@
 package Objects;
 
+import Interfaces.IIntersectable;
 import Tools.Intersection;
 import Tools.Ray;
 import Tools.Vector3D;
 
 import java.awt.*;
 
-public abstract class Object3D {
+public abstract class Object3D implements IIntersectable {
     private Vector3D position;
     private Color color;
 
@@ -15,7 +16,7 @@ public abstract class Object3D {
      * @param position
      * @param color
      */
-    public Object3D(Vector3D position, Color color) {
+    public Object3D(Vector3D position, Color color){
         setPosition(position);
         setColor(color);
     }
@@ -37,11 +38,4 @@ public abstract class Object3D {
     public void setColor(Color color) {
         this.color = color;
     }
-
-    /**
-     * Abstract function to return an intersection
-     * @param ray
-     * @return Intersection
-     */
-    public abstract Intersection getIntersection(Ray ray);
 }
