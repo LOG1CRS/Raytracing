@@ -19,10 +19,10 @@ public class Raytracer {
     public static void StartRaytracer(){
         System.out.println(new Date());
 
-        Scene scene01 = new Scene(8.0f,17.0f);
+        Scene scene01 = new Scene(8.0f,18.0f);
         scene01.setCamera(new Camera(new Vector3D(0, 0, 0), 160, 160, 800, 800));
         scene01.addObject(new Sphere(new Vector3D(0, 0, 14), 0.5f, Color.RED));
-        scene01.addObject(new Sphere(new Vector3D(2, 2, 18), 0.5f, Color.BLUE));
+        scene01.addObject(new Sphere(new Vector3D(0, 0, 18), 1f, Color.BLUE));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
