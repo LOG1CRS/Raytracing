@@ -1,25 +1,32 @@
-package Tools.FileReader;
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
+package up.edu.isgc.raytracer.tools;
 
-import Objects.Polygon;
-import Objects.Triangle;
-import Tools.Vector3D;
-
-import java.awt.*;
-import java.io.*;
+import up.edu.isgc.raytracer.Vector3D;
+import up.edu.isgc.raytracer.objects.Polygon;
+import up.edu.isgc.raytracer.objects.Triangle;
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-public class OBJReader {
-    public static Polygon GetPolygon(Vector3D origin, Color color) {
-
-        File file = ImportFiles.importFile();
-
+/**
+ *
+ * @author Jafet Rodríguez
+ */
+public abstract class OBJReader {
+    
+    public static Polygon GetPolygon(String path, Vector3D origin, Color color) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            
             List<Triangle> triangles = new ArrayList<Triangle>();
             List<Vector3D> vertices = new ArrayList<Vector3D>();
             List<Vector3D> normals = new ArrayList<Vector3D>();
@@ -41,7 +48,7 @@ public class OBJReader {
                     String[] faceComponents = line.split("(\\s)+");
                     List<Integer> faceVertex = new ArrayList<Integer>();
                     List<Integer> faceNormal = new ArrayList<Integer>();
-
+                    
                     for (int i = 1; i < faceComponents.length; i++) {
                         String[] infoVertex = faceComponents[i].split("/");
                         if (infoVertex.length >= 3) {
@@ -67,7 +74,7 @@ public class OBJReader {
                     }
                 }
             }
-
+            
             reader.close();
             return new Polygon(origin, triangles.toArray(new Triangle[triangles.size()]), color);
         } catch (FileNotFoundException ex) {
@@ -77,4 +84,5 @@ public class OBJReader {
         }
         return null;
     }
+    
 }

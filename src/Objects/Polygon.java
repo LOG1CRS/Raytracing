@@ -1,16 +1,24 @@
-package Objects;
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
+package up.edu.isgc.raytracer.objects;
 
-import Tools.Intersection;
-import Tools.Ray;
-import Tools.Vector3D;
-
+import up.edu.isgc.raytracer.Intersection;
+import up.edu.isgc.raytracer.Ray;
+import up.edu.isgc.raytracer.Vector3D;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ *
+ * @author Jafet Rodríguez
+ */
 public class Polygon extends Object3D {
+
     public List<Triangle> triangles;
 
     public List<Triangle> getTriangles() {
@@ -44,13 +52,12 @@ public class Polygon extends Object3D {
         Vector3D normal = Vector3D.ZERO();
         Vector3D position = Vector3D.ZERO();
 
-        //Search the best intersection
         for(Triangle triangle : getTriangles()){
             Intersection intersection = triangle.getIntersection(ray);
             double intersectionDistance = intersection.getDistance();
             if(intersection != null && intersectionDistance > 0 && (intersectionDistance < distance ||distance < 0)){
                 distance = intersectionDistance;
-                position = Vector3D.sum(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
+                position = Vector3D.add(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
                 normal = triangle.getNormal();
             }
         }

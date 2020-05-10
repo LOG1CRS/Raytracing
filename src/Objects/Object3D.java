@@ -1,27 +1,22 @@
-package Objects;
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
+package up.edu.isgc.raytracer.objects;
 
-import Interfaces.IIntersectable;
-import Tools.Intersection;
-import Tools.Ray;
-import Tools.Vector3D;
+import up.edu.isgc.raytracer.IIntersectable;
+import up.edu.isgc.raytracer.Vector3D;
 
 import java.awt.*;
 
+/**
+ *
+ * @author Jafet Rodríguez
+ */
 public abstract class Object3D implements IIntersectable {
+
     private Vector3D position;
     private Color color;
-
-    /**
-     * Object3D constructor
-     * @param position
-     * @param color
-     */
-    public Object3D(Vector3D position, Color color){
-        setPosition(position);
-        setColor(color);
-    }
-
-    //Getters & Setters
 
     public Vector3D getPosition() {
         return position;
@@ -38,4 +33,10 @@ public abstract class Object3D implements IIntersectable {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    public Object3D(Vector3D position, Color color) {
+        setPosition(position);
+        setColor(color);
+    }
+
 }

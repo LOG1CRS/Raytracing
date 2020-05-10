@@ -1,20 +1,22 @@
-package Tools;
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
+package up.edu.isgc.raytracer;
 
+/**
+ *
+ * @author Jafet Rodríguez
+ */
 public class Ray {
+
     private Vector3D origin;
     private Vector3D direction;
 
-    /**
-     * Ray constructor
-     * @param origin
-     * @param direction
-     */
-    public Ray(Vector3D origin, Vector3D direction){
+    public Ray(Vector3D origin, Vector3D direction) {
         setOrigin(origin);
         setDirection(direction);
     }
-
-    //Getters & Setters
 
     public Vector3D getOrigin() {
         return origin;

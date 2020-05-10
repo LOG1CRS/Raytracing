@@ -1,29 +1,29 @@
-package Tools;
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
+package up.edu.isgc.raytracer;
 
-import Objects.Object3D;
+import up.edu.isgc.raytracer.lights.Light;
+import up.edu.isgc.raytracer.objects.Camera;
+import up.edu.isgc.raytracer.objects.Object3D;
 
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author Jafet Rodríguez
+ */
 public class Scene {
+
     private Camera camera;
     private ArrayList<Object3D> objects;
-    private double clippingPlaneNear;
-    private double clippingPlaneFar;
+    private ArrayList<Light> lights;
 
-    /**
-     * Scene constructor
-     * Initialize the ArrayList of objects.
-     * @param clippingPlaneNear
-     * @param clippingPlaneFar
-     */
-    public Scene(double clippingPlaneNear, double clippingPlaneFar) {
+    public Scene(){
         setObjects(new ArrayList<Object3D>());
-        setClippingPlaneNear(clippingPlaneNear);
-        setClippingPlaneFar(clippingPlaneFar);
+        setLights(new ArrayList<Light>());
     }
-
-    //Getters & Setters
 
     public Camera getCamera() {
         return camera;
@@ -31,6 +31,10 @@ public class Scene {
 
     public void setCamera(Camera camera) {
         this.camera = camera;
+    }
+
+    public void addObject(Object3D object){
+        getObjects().add(object);
     }
 
     public ArrayList<Object3D> getObjects() {
@@ -41,27 +45,15 @@ public class Scene {
         this.objects = objects;
     }
 
-    public double getClippingPlaneNear() {
-        return clippingPlaneNear;
+    public ArrayList<Light> getLights() {
+        return lights;
     }
 
-    public void setClippingPlaneNear(double clippingPlaneNear) {
-        this.clippingPlaneNear = clippingPlaneNear;
+    public void setLights(ArrayList<Light> lights) {
+        this.lights = lights;
     }
 
-    public double getClippingPlaneFar() {
-        return clippingPlaneFar;
-    }
-
-    public void setClippingPlaneFar(double clippingPlaneFar) {
-        this.clippingPlaneFar = clippingPlaneFar;
-    }
-
-    /**
-     * Adds object to scene
-     * @param object
-     */
-    public void addObject(Object3D object){
-        getObjects().add(object);
+    public void addLight(Light light){
+        getLights().add(light);
     }
 }

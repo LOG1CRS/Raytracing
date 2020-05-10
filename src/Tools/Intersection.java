@@ -1,29 +1,28 @@
-package Tools;
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
+package up.edu.isgc.raytracer;
 
-import Objects.Object3D;
+import up.edu.isgc.raytracer.objects.Object3D;
 
+/**
+ *
+ * @author Jafet Rodríguez
+ */
 public class Intersection {
+
     private double distance;
     private Vector3D normal;
     private Vector3D position;
     private Object3D object;
 
-
-    /**
-     * Intersection constructor
-     * @param position
-     * @param distance
-     * @param normal
-     * @param object
-     */
     public Intersection(Vector3D position, double distance, Vector3D normal, Object3D object) {
         setPosition(position);
         setDistance(distance);
         setNormal(normal);
         setObject(object);
     }
-
-    //Getters & Setters
 
     public double getDistance() {
         return distance;

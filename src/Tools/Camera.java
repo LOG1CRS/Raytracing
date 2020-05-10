@@ -1,33 +1,36 @@
-package Tools;
+/**
+ * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
+ * All Rights Reserved.
+ */
+package up.edu.isgc.raytracer.objects;
 
-import Objects.Object3D;
+import up.edu.isgc.raytracer.Intersection;
+import up.edu.isgc.raytracer.Ray;
+import up.edu.isgc.raytracer.Vector3D;
+import up.edu.isgc.raytracer.objects.Object3D;
 
 import java.awt.*;
 
+/**
+ * @author Jafet Rodríguez
+ */
 public class Camera extends Object3D {
-
-    // 0 is horizontal and 1 is vertical
+    // 0 is fovh
+    // 1 is fovv
     private float[] fieldOfView = new float[2];
-    // 0 is width and 1 is height
-    private int[] resolution;
     private float defaultZ = 15f;
+    // 0 is width
+    // 1 is height
+    private int[] resolution;
+    private float[] nearFarPlanes = new float[2];
 
-    /**
-     * Camera constructor
-     * @param position
-     * @param fieldOfViewHorizontal
-     * @param fieldOfViewVertical
-     * @param widthResolution
-     * @param heightResolution
-     */
-    public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution , int heightResolution) {
+    public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution, float nearPlane, float farPlane) {
         super(position, Color.black);
         setFieldOfViewHorizontal(fieldOfViewHorizontal);
         setFieldOfViewVertical(fieldOfViewVertical);
         setResolution(new int[]{widthResolution, heightResolution});
+        setNearFarPlanes(new float[]{nearPlane, farPlane});
     }
-
-    //Getters & Setters
 
     public float[] getFieldOfView() {
         return fieldOfView;
@@ -35,6 +38,22 @@ public class Camera extends Object3D {
 
     public void setFieldOfView(float[] fieldOfView) {
         this.fieldOfView = fieldOfView;
+    }
+
+    public float getFieldOfViewHorizontal() {
+        return fieldOfView[0];
+    }
+
+    public void setFieldOfViewHorizontal(float fov) {
+        fieldOfView[0] = fov;
+    }
+
+    public float getFieldOfViewVertical() {
+        return fieldOfView[1];
+    }
+
+    public void setFieldOfViewVertical(float fov) {
+        fieldOfView[1] = fov;
     }
 
     public float getDefaultZ() {
@@ -53,60 +72,47 @@ public class Camera extends Object3D {
         this.resolution = resolution;
     }
 
-    public float getFieldOfViewHorizontal(){
-        return fieldOfView[0];
-    }
-
-    public void setFieldOfViewHorizontal(float fovHorizontal){
-        fieldOfView[0] = fovHorizontal;
-    }
-
-    public float getFieldOfViewVertical(){
-        return fieldOfView[1];
-    }
-
-    public void setFieldOfViewVertical(float fovVertical){
-        fieldOfView[1] = fovVertical;
-    }
-
-    public int getResolutionWidth(){
+    public int getResolutionWidth() {
         return getResolution()[0];
     }
 
-    public int getResolutionHeight(){
+    public int getResolutionHeight() {
         return getResolution()[1];
     }
 
-    /**
-     *Calculates the ray mesh of the camera and return a two-dimensional matrix with the position of each pixel
-     * @return Vector3D[][]
-     */
-    public Vector3D[][] calculatePositionsToRay(){
-        //Calculate the size of the ray mesh in x that is the width of the mesh
-        float angleMaxInX = 90 - (getFieldOfViewHorizontal() / 2f);
-        float radiusMaxInX = getDefaultZ() / (float) Math.cos(Math.toRadians(angleMaxInX));
-        float maxInX = (float) Math.sin(Math.toRadians(angleMaxInX)) * radiusMaxInX;
-        float minInX = -maxInX;
+    public Vector3D[][] calculatePositionsToRay() {
+        float angleMaxX = 90 - (getFieldOfViewHorizontal() / 2f);
+        float radiusMaxX = getDefaultZ() / (float) Math.cos(Math.toRadians(angleMaxX));
 
-        //Calculate the size of the ray mesh in y that is the height of the mesh
-        float angleMaxInY = 90 - (getFieldOfViewVertical() / 2f);
-        float radiusMaxInY = getDefaultZ() / (float) Math.cos(Math.toRadians(angleMaxInY));
-        float maxInY = (float) Math.sin(Math.toRadians(angleMaxInY)) * radiusMaxInY;
-        float minInY = -maxInY;
+        float maxX = (float) Math.sin(Math.toRadians(angleMaxX)) * radiusMaxX;
+        float minX = -maxX;
+
+        float angleMaxY = 90 - (getFieldOfViewVertical() / 2f);
+        float radiusMaxY = getDefaultZ() / (float) Math.cos(Math.toRadians(angleMaxY));
+
+        float maxY = (float) Math.sin(Math.toRadians(angleMaxY)) * radiusMaxY;
+        float minY = -maxY;
 
         Vector3D[][] positions = new Vector3D[getResolutionWidth()][getResolutionHeight()];
-
-        //calculate the position of each pixel in the mesh
         float posZ = getDefaultZ();
-        for(int x = 0; x<positions.length; x++){
-            for(int y = 0; y<positions[x].length; y++){
-                float posX = minInX + (((maxInX - minInX) / (float) getResolutionWidth()) * x);
-                float posY = maxInY - (((maxInY - minInY) / (float) getResolutionWidth()) * y);
+        for (int x = 0; x < positions.length; x++) {
+            for (int y = 0; y < positions[x].length; y++) {
+                float posX = minX + (((maxX - minX) / (float) getResolutionWidth()) * x);
+                //float posY = minY + (((maxY - minY) / (float) getResolutionHeight()) * y);
+                float posY = maxY - (((maxY - minY) / (float) getResolutionHeight()) * y);
                 positions[x][y] = new Vector3D(posX, posY, posZ);
             }
         }
 
         return positions;
+    }
+
+    public float[] getNearFarPlanes() {
+        return nearFarPlanes;
+    }
+
+    public void setNearFarPlanes(float[] nearFarPlanes) {
+        this.nearFarPlanes = nearFarPlanes;
     }
 
     @Override
