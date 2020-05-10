@@ -5,7 +5,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 
 public class ImportFiles {
-    public static void importFile(){
+    public static File importFile(){
 
         //Change the JFileChooser window style
         try {
@@ -21,8 +21,9 @@ public class ImportFiles {
         chooserConfiguration(selector, parentFrame);
         System.out.println("Select all .obj files you want to add to the scene");
 
-        File[] input = askForTheFiles(selector, parentFrame);
+        File input = askForTheFiles(selector, parentFrame);
 
+        return input;
     }
 
     /**
@@ -45,7 +46,7 @@ public class ImportFiles {
      * @param parentFrame
      * @return inputFile[]
      */
-    private static File[] askForTheFiles(JFileChooser selector, JFrame parentFrame)
+    private static File askForTheFiles(JFileChooser selector, JFrame parentFrame)
     {
         int result;
 
@@ -58,6 +59,6 @@ public class ImportFiles {
         //Destroy the window
         parentFrame.dispose();
 
-        return selector.getSelectedFiles();
+        return selector.getSelectedFile();
     }
 }

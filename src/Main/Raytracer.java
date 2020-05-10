@@ -5,6 +5,7 @@ import Objects.Polygon;
 import Objects.Sphere;
 import Objects.Triangle;
 import Tools.*;
+import Tools.FileReader.OBJReader;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -21,18 +22,22 @@ public class Raytracer {
     public static void StartRaytracer(){
         System.out.println(new Date());
 
-
-
-        Scene scene01 = new Scene(9f,18.0f);
+        Scene scene01 = new Scene(1f,18.0f);
         scene01.setCamera(new Camera(new Vector3D(0, 0, 0), 160, 160, 800, 800));
+        /*
         scene01.addObject(new Sphere(new Vector3D(0, 0, 14), 0.5f, Color.RED));
-        scene01.addObject(new Sphere(new Vector3D(0, 0, 18), 1f, Color.BLUE));
+
         scene01.addObject(new Polygon(new Vector3D(-1,-1,15),
                 new Triangle[]{
                         new Triangle(Vector3D.ZERO(), new Vector3D(1,0,0), new Vector3D(1,-1,0)),
                         new Triangle(Vector3D.ZERO(), new Vector3D(0,0,-1), new Vector3D(1,-1,0))
                 },
-                Color.BLUE));
+                Color.BLUE));*/
+        scene01.addObject(new Sphere(new Vector3D(0, 0, 17f), 1f, Color.BLUE));
+        scene01.addObject(OBJReader.GetPolygon(new Vector3D(0f, -1.5f, 12f), Color.CYAN));
+        //scene01.addObject(OBJReader.GetPolygon(new Vector3D(-3f, -2.5f, 3f), Color.GREEN));
+        //scene01.addObject(OBJReader.GetPolygon(new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
+        //scene01.addObject(OBJReader.GetPolygon(new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");

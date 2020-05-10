@@ -101,7 +101,7 @@ public class Camera extends Object3D {
         for(int x = 0; x<positions.length; x++){
             for(int y = 0; y<positions[x].length; y++){
                 float posX = minInX + (((maxInX - minInX) / (float) getResolutionWidth()) * x);
-                float posY = minInY + (((maxInY - minInY) / (float) getResolutionWidth()) * y);
+                float posY = maxInY - (((maxInY - minInY) / (float) getResolutionWidth()) * y);
                 positions[x][y] = new Vector3D(posX, posY, posZ);
             }
         }

@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Polygon extends Object3D {
-
     public List<Triangle> triangles;
 
     public List<Triangle> getTriangles() {
