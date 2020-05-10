@@ -2,12 +2,15 @@
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer;
 
-import up.edu.isgc.raytracer.lights.DirectionalLight;
-import up.edu.isgc.raytracer.lights.Light;
-import up.edu.isgc.raytracer.objects.*;
-import up.edu.isgc.raytracer.tools.OBJReader;
+package Main;
+
+import Objects.Object3D;
+import Objects.Sphere;
+import Tools.*;
+import Tools.FileReader.OBJReader;
+import lights.DirectionalLight;
+import lights.Light;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;
@@ -23,7 +26,7 @@ import java.util.Date;
  */
 public class Raytracer {
 
-    public static void main(String[] args) {
+    public static void startRaytracer() {
         System.out.println(new Date());
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800, 8.2f, 50f));
@@ -34,10 +37,10 @@ public class Raytracer {
         scene01.addObject(new Sphere(new Vector3D(0.35f, 1f, 4.5f), 0.3f, Color.BLUE));
         scene01.addObject(new Sphere(new Vector3D(4.85f, 1f, 4.5f), 0.3f, Color.PINK));
         scene01.addObject(new Sphere(new Vector3D(2.85f, 1f, 304.5f), 0.5f, Color.BLUE));
-        scene01.addObject(OBJReader.GetPolygon("Cube.obj", new Vector3D(0f, -2.5f, 1f), Color.WHITE));
-        scene01.addObject(OBJReader.GetPolygon("CubeQuad.obj", new Vector3D(-3f, -2.5f, 3f), Color.GREEN));
-        scene01.addObject(OBJReader.GetPolygon("SmallTeapot.obj", new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
-        scene01.addObject(OBJReader.GetPolygon("Ring.obj", new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(0f, -2.5f, 1f), Color.WHITE));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/CubeQuad.obj", new Vector3D(-3f, -2.5f, 3f), Color.GREEN));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");

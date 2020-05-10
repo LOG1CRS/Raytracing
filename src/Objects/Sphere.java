@@ -2,11 +2,12 @@
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Intersection;
-import up.edu.isgc.raytracer.Ray;
-import up.edu.isgc.raytracer.Vector3D;
+package Objects;
+
+import Tools.Intersection;
+import Tools.Ray;
+import Tools.Vector3D;
 
 import java.awt.*;
 
@@ -48,7 +49,7 @@ public class Sphere extends Object3D {
             double part2 = -firstP - sqrtIntersection;
 
             distance = Math.min(part1, part2);
-            position = Vector3D.add(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
+            position = Vector3D.sum(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
             normal = Vector3D.normalize(Vector3D.substract(position, getPosition()));
         } else {
             return null;

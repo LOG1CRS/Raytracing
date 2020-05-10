@@ -1,8 +1,7 @@
-/**
+package Tools; /**
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer;
 
 /**
  *
@@ -57,7 +56,7 @@ public class Vector3D {
         return Math.sqrt(dotProduct(vectorA, vectorA));
     }
 
-    public static Vector3D add(Vector3D vectorA, Vector3D vectorB){
+    public static Vector3D sum(Vector3D vectorA, Vector3D vectorB){
         return new Vector3D(vectorA.getX() + vectorB.getX(), vectorA.getY() + vectorB.getY(), vectorA.getZ() + vectorB.getZ());
     }
 

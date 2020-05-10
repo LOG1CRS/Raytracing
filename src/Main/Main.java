@@ -1,13 +1,14 @@
 package Main;
 
 /**
- * Ray tracing code
+ * Raytracing code
  * Final project of Multimedia and computational graphics class
  * @author LOG1C_RS
- * @version 1.0
+ * @author Jafet Rodríguez
+ * @version 0.5
  */
 public class Main {
     public static void main(String[] args) {
-        Raytracer.StartRaytracer();
+        Raytracer.startRaytracer();
     }
 }

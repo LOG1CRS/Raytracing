@@ -2,11 +2,15 @@
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer.objects;
 
-import up.edu.isgc.raytracer.Intersection;
-import up.edu.isgc.raytracer.Ray;
-import up.edu.isgc.raytracer.Vector3D;
+package Objects;
+
+import Objects.Object3D;
+import Objects.Triangle;
+import Tools.Intersection;
+import Tools.Ray;
+import Tools.Vector3D;
+
 import java.awt.*;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -57,7 +61,7 @@ public class Polygon extends Object3D {
             double intersectionDistance = intersection.getDistance();
             if(intersection != null && intersectionDistance > 0 && (intersectionDistance < distance ||distance < 0)){
                 distance = intersectionDistance;
-                position = Vector3D.add(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
+                position = Vector3D.sum(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
                 normal = triangle.getNormal();
             }
         }

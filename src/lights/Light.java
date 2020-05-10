@@ -2,12 +2,13 @@
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer.lights;
 
-import up.edu.isgc.raytracer.Intersection;
-import up.edu.isgc.raytracer.Ray;
-import up.edu.isgc.raytracer.Vector3D;
-import up.edu.isgc.raytracer.objects.Object3D;
+package lights;
+
+import Objects.Object3D;
+import Tools.Intersection;
+import Tools.Ray;
+import Tools.Vector3D;
 
 import java.awt.*;
 

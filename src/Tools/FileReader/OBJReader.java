@@ -2,11 +2,13 @@
  * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
  * All Rights Reserved.
  */
-package up.edu.isgc.raytracer.tools;
 
-import up.edu.isgc.raytracer.Vector3D;
-import up.edu.isgc.raytracer.objects.Polygon;
-import up.edu.isgc.raytracer.objects.Triangle;
+package Tools.FileReader;
+
+import Objects.Polygon;
+import Objects.Triangle;
+import Tools.Vector3D;
+
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
