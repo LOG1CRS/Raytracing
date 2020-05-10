@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Main;
 
 import Objects.Object3D;
@@ -17,15 +12,16 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * @author Jafet Rodríguez
- */
 public class Raytracer {
 
+    /**
+     * Starts Raytracer and initializes a scene, camera and put the objects in scene
+     * @author LOG1CRS
+     * @author Jafet Rodríguez
+     */
     public static void startRaytracer() {
         System.out.println(new Date());
         Scene scene01 = new Scene();
@@ -52,6 +48,14 @@ public class Raytracer {
         System.out.println(new Date());
     }
 
+
+    /**
+     * Creates de BufferedImage
+     * @param scene
+     * @return BufferedImage
+     * @author LOG1CRS
+     * @author Jafet Rodríguez
+     */
     public static BufferedImage raytrace(Scene scene) {
         Camera mainCamera = scene.getCamera();
         ArrayList<Light> lights = scene.getLights();
@@ -95,6 +99,11 @@ public class Raytracer {
         return image;
     }
 
+    /**
+     *
+     * @author LOG1CRS
+     * @author Jafet Rodríguez
+     */
     public static float clamp(float value, float min, float max) {
         if (value < min) {
             return min;
@@ -105,6 +114,11 @@ public class Raytracer {
         return value;
     }
 
+    /**
+     *
+     * @author LOG1CRS
+     * @author Jafet Rodríguez
+     */
     public static Color addColor(Color original, Color otherColor){
         float red = clamp((original.getRed() / 255.0f) + (otherColor.getRed() / 255.0f), 0, 1);
         float green = clamp((original.getGreen() / 255.0f) + (otherColor.getGreen() / 255.0f), 0, 1);
@@ -112,6 +126,16 @@ public class Raytracer {
         return new Color(red, green, blue);
     }
 
+
+    /**
+     * raycaset checks what is the closest intersection, object by object
+     * @param ray
+     * @param objects
+     * @param caster
+     * @return intersection
+     * @author LOG1CRS
+     * @author Jafet Rodríguez
+     */
     public static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] clippingPlanes) {
         Intersection closestIntersection = null;
 

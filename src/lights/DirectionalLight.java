@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package lights;
 
 import Tools.Intersection;
@@ -12,6 +7,7 @@ import java.awt.*;
 
 /**
  *
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class DirectionalLight extends Light {

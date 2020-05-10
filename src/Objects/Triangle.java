@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Objects;
 
 import Interfaces.IIntersectable;
@@ -11,6 +6,8 @@ import Tools.Ray;
 import Tools.Vector3D;
 
 /**
+ * Triangle Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class Triangle implements IIntersectable {
@@ -20,11 +17,13 @@ public class Triangle implements IIntersectable {
     private Vector3D[] vertices;
     private Vector3D[] normals;
 
+    //Constructor
     public Triangle(Vector3D vertex1, Vector3D vertex2, Vector3D vertex3) {
         setVertices(vertex1, vertex2, vertex3);
         setNormals(null);
     }
 
+    //Getters & Setters
     public Vector3D[] getVertices() {
         return vertices;
     }
@@ -80,12 +79,16 @@ public class Triangle implements IIntersectable {
         double invertedDeterminant = 1.0 / determinant;
         Vector3D vectorT = Vector3D.substract(ray.getOrigin(), vertices[0]);
         double u = Vector3D.dotProduct(vectorT, vectorP) * invertedDeterminant;
+
+        //if the if is true, the ray is out of range
         if (u < 0 || u > 1) {
             return intersection;
         }
 
         Vector3D vectorQ = Vector3D.crossProduct(vectorT, v2v0);
         double v = Vector3D.dotProduct(ray.getDirection(), vectorQ) * invertedDeterminant;
+
+        //if the if is true, the ray is out of range
         if (v < 0 || (u + v) > (1.0 + EPSILON)) {
             return intersection;
         }

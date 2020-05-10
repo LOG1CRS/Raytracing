@@ -1,15 +1,11 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Interfaces;
 
 import Tools.Intersection;
 import Tools.Ray;
 
 /**
- *
+ * Java interface
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public interface IIntersectable {

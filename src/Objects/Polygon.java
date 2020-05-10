@@ -1,12 +1,5 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Objects;
 
-import Objects.Object3D;
-import Objects.Triangle;
 import Tools.Intersection;
 import Tools.Ray;
 import Tools.Vector3D;
@@ -18,20 +11,23 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
+ * Polygon Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class Polygon extends Object3D {
 
     public List<Triangle> triangles;
 
-    public List<Triangle> getTriangles() {
-        return triangles;
-    }
-
+    //Constructor
     public Polygon(Vector3D position, Triangle[] triangles, Color color){
         super(position, color);
         setTriangles(triangles);
+    }
+
+    //Getters & Setters
+    public List<Triangle> getTriangles() {
+        return triangles;
     }
 
     public void setTriangles(Triangle[] triangles) {

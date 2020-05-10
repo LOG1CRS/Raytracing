@@ -1,13 +1,8 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Tools;
-import Tools.Vector3D;
 
 /**
- *
+ * Ray Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class Ray {
@@ -15,11 +10,13 @@ public class Ray {
     private Vector3D origin;
     private Vector3D direction;
 
+    //Constructor
     public Ray(Vector3D origin, Vector3D direction) {
         setOrigin(origin);
         setDirection(direction);
     }
 
+    //Getters & Setters
     public Vector3D getOrigin() {
         return origin;
     }

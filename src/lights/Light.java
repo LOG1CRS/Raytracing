@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package lights;
 
 import Objects.Object3D;
@@ -14,6 +9,7 @@ import java.awt.*;
 
 /**
  *
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public abstract class Light extends Object3D {

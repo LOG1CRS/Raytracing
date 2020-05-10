@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Objects;
 import Interfaces.IIntersectable;
 import Tools.Vector3D;
@@ -10,7 +5,8 @@ import Tools.Vector3D;
 import java.awt.*;
 
 /**
- *
+ * Object3D Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public abstract class Object3D implements IIntersectable {
@@ -18,6 +14,13 @@ public abstract class Object3D implements IIntersectable {
     private Vector3D position;
     private Color color;
 
+    //Constructor
+    public Object3D(Vector3D position, Color color) {
+        setPosition(position);
+        setColor(color);
+    }
+
+    //Getters & Setters
     public Vector3D getPosition() {
         return position;
     }
@@ -33,10 +36,4 @@ public abstract class Object3D implements IIntersectable {
     public void setColor(Color color) {
         this.color = color;
     }
-
-    public Object3D(Vector3D position, Color color) {
-        setPosition(position);
-        setColor(color);
-    }
-
 }

@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Tools.FileReader;
 
 import Objects.Polygon;
@@ -20,11 +15,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * OBJReader Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public abstract class OBJReader {
-    
+
+    /**
+     * Extracts triangles of the OBJ file
+     * @param path
+     * @param origin
+     * @param color
+     * @return Polygon
+     * @author LOG1CRS
+     * @author Jafet Rodríguez
+     */
     public static Polygon GetPolygon(String path, Vector3D origin, Color color) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -67,8 +72,6 @@ public abstract class OBJReader {
                         for (int i = 0; i < faceVertex.size(); i++) {
                             triangleVertices[i] = (vertices.get(faceVertex.get(i) - 1));
                         }
-                        //Vector3D[] verticesNormals = new Vector3D[]{normals.get(faceNormal.get(0) - 1)};
-                        //triangles.add(new Triangle(triangleVertices, verticesNormals));
                         triangles.add(new Triangle(triangleVertices[1], triangleVertices[0], triangleVertices[2]));
                         if (faceVertex.size() == 4) {
                             triangles.add(new Triangle(triangleVertices[2], triangleVertices[0], triangleVertices[3]));

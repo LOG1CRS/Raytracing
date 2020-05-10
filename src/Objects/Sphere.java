@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Objects;
 
 import Tools.Intersection;
@@ -12,24 +7,27 @@ import Tools.Vector3D;
 import java.awt.*;
 
 /**
- *
+ * Sphere Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class Sphere extends Object3D {
 
     private float radius;
 
+    //Constructor
+    public Sphere(Vector3D position, float radius, Color color) {
+        super(position, color);
+        setRadius(radius);
+    }
+
+    //Getters & Setters
     public float getRadius() {
         return radius;
     }
 
     public void setRadius(float radius) {
         this.radius = radius;
-    }
-
-    public Sphere(Vector3D position, float radius, Color color) {
-        super(position, color);
-        setRadius(radius);
     }
 
     @Override

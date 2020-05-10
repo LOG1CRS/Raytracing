@@ -1,8 +1,3 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Tools;
 
 import Objects.Object3D;
@@ -11,7 +6,8 @@ import lights.Light;
 import java.util.ArrayList;
 
 /**
- *
+ * Scene Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class Scene {
@@ -20,21 +16,19 @@ public class Scene {
     private ArrayList<Object3D> objects;
     private ArrayList<Light> lights;
 
+    //Constructor
     public Scene(){
         setObjects(new ArrayList<Object3D>());
         setLights(new ArrayList<Light>());
     }
 
+    //Getters & Setters
     public Camera getCamera() {
         return camera;
     }
 
     public void setCamera(Camera camera) {
         this.camera = camera;
-    }
-
-    public void addObject(Object3D object){
-        getObjects().add(object);
     }
 
     public ArrayList<Object3D> getObjects() {
@@ -53,6 +47,18 @@ public class Scene {
         this.lights = lights;
     }
 
+    /**
+     * Adds object to scene
+     * @param object
+     */
+    public void addObject(Object3D object){
+        getObjects().add(object);
+    }
+
+    /**
+     * Adds light to scene
+     * @param light
+     */
     public void addLight(Light light){
         getLights().add(light);
     }

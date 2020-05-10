@@ -1,14 +1,10 @@
-/**
- * [1968] - [2020] Centros Culturales de Mexico A.C / Universidad Panamericana
- * All Rights Reserved.
- */
-
 package Tools;
 
 import Objects.Object3D;
 
 /**
- *
+ * Intersection Class
+ * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class Intersection {
@@ -18,6 +14,7 @@ public class Intersection {
     private Vector3D position;
     private Object3D object;
 
+    //Constructor
     public Intersection(Vector3D position, double distance, Vector3D normal, Object3D object) {
         setPosition(position);
         setDistance(distance);
@@ -25,6 +22,7 @@ public class Intersection {
         setObject(object);
     }
 
+    //Getters & Setters
     public double getDistance() {
         return distance;
     }
