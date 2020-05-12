@@ -8,18 +8,20 @@ import Tools.Vector3D;
 import java.awt.*;
 
 /**
- *
+ * Light Class
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public abstract class Light extends Object3D {
     private double intensity;
 
+    //Constructor
     public Light(Vector3D position, Color color, double intensity){
         super(position, color);
         setIntensity(intensity);
     }
 
+    //Getters & Setters
     public double getIntensity() {
         return intensity;
     }

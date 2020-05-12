@@ -6,18 +6,20 @@ import Tools.Vector3D;
 import java.awt.*;
 
 /**
- *
+ * DirectionalLight Class
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public class DirectionalLight extends Light {
     private Vector3D direction;
 
+    //Constructor
     public DirectionalLight(Vector3D position, Vector3D direction, Color color, double intensity){
         super(position, color, intensity);
         setDirection(Vector3D.normalize(direction));
     }
 
+    //Getters & Setters
     public Vector3D getDirection() {
         return direction;
     }

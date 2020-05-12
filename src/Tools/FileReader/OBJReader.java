@@ -27,8 +27,6 @@ public abstract class OBJReader {
      * @param origin
      * @param color
      * @return Polygon
-     * @author LOG1CRS
-     * @author Jafet Rodríguez
      */
     public static Polygon GetPolygon(String path, Vector3D origin, Color color) {
         try {

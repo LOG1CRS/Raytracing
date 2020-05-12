@@ -12,31 +12,41 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
+/**
+ * Raytracer Class
+ * @author LOG1CRS
+ * @author Jafet Rodríguez
+ */
 public class Raytracer {
 
     /**
      * Starts Raytracer and initializes a scene, camera and put the objects in scene
-     * @author LOG1CRS
-     * @author Jafet Rodríguez
      */
     public static void startRaytracer() {
-        System.out.println(new Date());
+        int arrayTime[] = new int[4];
+
+        System.out.println("Raytracer is running!");
+        System.out.println("Please wait...");
+
+        arrayTime[0] = LocalDateTime.now().getSecond();
+        arrayTime[1] = LocalDateTime.now().getMinute();
+
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800, 8.2f, 50f));
         scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, 0.0, 1.0), Color.WHITE, 1.1));
         //scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, -1.0, 0.0), Color.GREEN, 0.1));
-        scene01.addObject(new Sphere(new Vector3D(0f, 1f, 5f), 0.5f, Color.RED));
-        scene01.addObject(new Sphere(new Vector3D(0.5f, 1f, 4.5f), 0.25f, new Color(200, 255, 0)));
-        scene01.addObject(new Sphere(new Vector3D(0.35f, 1f, 4.5f), 0.3f, Color.BLUE));
-        scene01.addObject(new Sphere(new Vector3D(4.85f, 1f, 4.5f), 0.3f, Color.PINK));
-        scene01.addObject(new Sphere(new Vector3D(2.85f, 1f, 304.5f), 0.5f, Color.BLUE));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(0f, -2.5f, 1f), Color.WHITE));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/CubeQuad.obj", new Vector3D(-3f, -2.5f, 3f), Color.GREEN));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(2f, -1.0f, 1.5f), Color.BLUE));
+        //scene01.addObject(new Sphere(new Vector3D(0f, 1f, 5f), 0.5f, Color.RED));
+        //scene01.addObject(new Sphere(new Vector3D(0.35f, 1f, 4.5f), 0.3f, Color.BLUE));
+        //scene01.addObject(new Sphere(new Vector3D(4.85f, 1f, 4.5f), 0.3f, Color.PINK));
+        //scene01.addObject(new Sphere(new Vector3D(2.85f, 1f, 304.5f), 0.5f, Color.BLUE));
+        scene01.addObject(new Sphere(new Vector3D(0f, -0.5f, 4.5f), 1f, new Color(15, 189, 186)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(2f, -0.8f, 1f), Color.green));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/CubeQuad.obj", new Vector3D(-3.5f, -0.6f, 8f), Color.red));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(0f, 1f, 1.5f), Color.LIGHT_GRAY));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0f, -2.3f, 1.5f), Color.BLUE));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
@@ -45,7 +55,11 @@ public class Raytracer {
         } catch (IOException ioe) {
             System.out.println("Something failed");
         }
-        System.out.println(new Date());
+
+        arrayTime[2] = LocalDateTime.now().getSecond();
+        arrayTime[3] = LocalDateTime.now().getMinute();
+
+        printRunTimeCode(arrayTime);
     }
 
 
@@ -53,10 +67,8 @@ public class Raytracer {
      * Creates de BufferedImage
      * @param scene
      * @return BufferedImage
-     * @author LOG1CRS
-     * @author Jafet Rodríguez
      */
-    public static BufferedImage raytrace(Scene scene) {
+    private static BufferedImage raytrace(Scene scene) {
         Camera mainCamera = scene.getCamera();
         ArrayList<Light> lights = scene.getLights();
         float[] nearFarPlanes = mainCamera.getNearFarPlanes();
@@ -100,11 +112,13 @@ public class Raytracer {
     }
 
     /**
-     *
-     * @author LOG1CRS
-     * @author Jafet Rodríguez
+     * Returns value clamped to according range of min and max.
+     * @param value
+     * @param min
+     * @param max
+     * @return value
      */
-    public static float clamp(float value, float min, float max) {
+    private static float clamp(float value, float min, float max) {
         if (value < min) {
             return min;
         }
@@ -115,11 +129,12 @@ public class Raytracer {
     }
 
     /**
-     *
-     * @author LOG1CRS
-     * @author Jafet Rodríguez
+     * Allows to add custom RGB color to an object
+     * @param original
+     * @param otherColor
+     * @return new Color
      */
-    public static Color addColor(Color original, Color otherColor){
+    private static Color addColor(Color original, Color otherColor){
         float red = clamp((original.getRed() / 255.0f) + (otherColor.getRed() / 255.0f), 0, 1);
         float green = clamp((original.getGreen() / 255.0f) + (otherColor.getGreen() / 255.0f), 0, 1);
         float blue = clamp((original.getBlue() / 255.0f) + (otherColor.getBlue() / 255.0f), 0, 1);
@@ -133,10 +148,8 @@ public class Raytracer {
      * @param objects
      * @param caster
      * @return intersection
-     * @author LOG1CRS
-     * @author Jafet Rodríguez
      */
-    public static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] clippingPlanes) {
+    private static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] clippingPlanes) {
         Intersection closestIntersection = null;
 
         for (int k = 0; k < objects.size(); k++) {
@@ -156,5 +169,22 @@ public class Raytracer {
         }
 
         return closestIntersection;
+    }
+
+    /**
+     * Prints the code runtime
+     * @param arrayTime
+     */
+    private static void printRunTimeCode(int arrayTime[]){
+        //position: 0 = initial seconds
+        //position: 1 = initial minutes
+        //position: 2 = final seconds
+        //position: 3 = final minutes
+
+        if(arrayTime[1] == arrayTime[3]){
+            System.out.println("The code runtime was: " + (arrayTime[2] - arrayTime[0]) + " seconds");
+        } else{
+            System.out.println("The code runtime was: " + ((arrayTime[2] + 60) - arrayTime[0]) + " seconds");
+        }
     }
 }
