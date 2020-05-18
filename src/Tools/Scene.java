@@ -1,7 +1,8 @@
 package Tools;
 
+import Lights.Light;
 import Objects.Object3D;
-import lights.Light;
+
 
 import java.util.ArrayList;
 

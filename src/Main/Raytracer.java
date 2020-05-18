@@ -1,11 +1,12 @@
 package Main;
 
+import Lights.DirectionalLight;
+import Lights.Light;
+import Lights.PointLight;
 import Objects.Object3D;
 import Objects.Sphere;
 import Tools.*;
 import Tools.FileReader.OBJReader;
-import lights.DirectionalLight;
-import lights.Light;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;
@@ -36,13 +37,14 @@ public class Raytracer {
 
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800, 8.2f, 50f));
-        scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, 0.0, 1.0), Color.WHITE, 1.1));
-        //scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, -1.0, 0.0), Color.GREEN, 0.1));
-        //scene01.addObject(new Sphere(new Vector3D(0f, 1f, 5f), 0.5f, Color.RED));
-        //scene01.addObject(new Sphere(new Vector3D(0.35f, 1f, 4.5f), 0.3f, Color.BLUE));
-        //scene01.addObject(new Sphere(new Vector3D(4.85f, 1f, 4.5f), 0.3f, Color.PINK));
-        //scene01.addObject(new Sphere(new Vector3D(2.85f, 1f, 304.5f), 0.5f, Color.BLUE));
-        scene01.addObject(new Sphere(new Vector3D(0f, -0.5f, 4.5f), 1f, new Color(15, 189, 186)));
+        scene01.addLight(new PointLight(new Vector3D(-1f, 1.5f, -1f), Color.WHITE, 1));
+        /*scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, 0.0, 1.0), Color.WHITE, 1.1));
+        scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, -1.0, 0.0), Color.GREEN, 0.1));
+        scene01.addObject(new Sphere(new Vector3D(0f, 1f, 5f), 0.5f, Color.RED));
+        scene01.addObject(new Sphere(new Vector3D(0.35f, 1f, 4.5f), 0.3f, Color.BLUE));
+        scene01.addObject(new Sphere(new Vector3D(4.85f, 1f, 4.5f), 0.3f, Color.PINK));
+        scene01.addObject(new Sphere(new Vector3D(2.85f, 1f, 304.5f), 0.5f, Color.BLUE));
+        scene01.addObject(new Sphere(new Vector3D(0f, -0.5f, 4.5f), 1f, new Color(15, 189, 186)));*/
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(2f, -0.8f, 1f), Color.green));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/CubeQuad.obj", new Vector3D(-3.5f, -0.6f, 8f), Color.red));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(0f, 1f, 1.5f), Color.LIGHT_GRAY));

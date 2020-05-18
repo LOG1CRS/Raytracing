@@ -1,4 +1,4 @@
-package lights;
+package Lights;
 
 import Objects.Object3D;
 import Tools.Intersection;
