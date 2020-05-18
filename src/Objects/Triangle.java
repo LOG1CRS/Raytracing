@@ -6,7 +6,7 @@ import Tools.Ray;
 import Tools.Vector3D;
 
 /**
- * Triangle Class
+ * Triangle Class, this class creates
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -28,6 +28,12 @@ public class Triangle implements IIntersectable {
         return vertices;
     }
 
+    /**
+     * Set the triangle, obtaining each vertex
+     * @param vertex1
+     * @param vertex2
+     * @param vertex3
+     */
     public void setVertices(Vector3D vertex1, Vector3D vertex2, Vector3D vertex3) {
         Vector3D[] vertices = new Vector3D[]{vertex1, vertex2, vertex3};
         setVertices(vertices);
@@ -41,6 +47,10 @@ public class Triangle implements IIntersectable {
         return normals;
     }
 
+    /**
+     * Return the normal of each vertex or creates the normal if normal equals null
+     * @return normal of the vertex
+     */
     public Vector3D getNormal() {
         Vector3D normal = Vector3D.ZERO();
 

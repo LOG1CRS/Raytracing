@@ -6,7 +6,7 @@ import lights.Light;
 import java.util.ArrayList;
 
 /**
- * Scene Class
+ * Scene Class, this class contains the basic properties to crate a scene
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

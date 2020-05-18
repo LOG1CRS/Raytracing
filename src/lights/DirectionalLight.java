@@ -6,7 +6,7 @@ import Tools.Vector3D;
 import java.awt.*;
 
 /**
- * DirectionalLight Class
+ * DirectionalLight Class, this class creates a kind of light that only sends light in a single direction.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

@@ -1,8 +1,9 @@
 package Main;
 
 /**
- * Raytracing code
- * Final project of Multimedia and computational graphics class
+ * Raytracing Project, the code allows to import obj files or create basic figures, create scenes, lights, and render everything
+ * Final project of Multimedia & Computer Graphics course at Universidad Panamericana
+ * Here the code starts, in this main function
  * @author LOG1CRS
  * @author Jafet Rodríguez
  * @version 0.5

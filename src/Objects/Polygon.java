@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Polygon Class
+ * Polygon Class, this class creates a kind of 3D object with triangles
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -30,6 +30,10 @@ public class Polygon extends Object3D {
         return triangles;
     }
 
+    /**
+     * set the shape of the polygon, obtaining each vertex of each triangle
+     * @param triangles
+     */
     public void setTriangles(Triangle[] triangles) {
         Vector3D position = getPosition();
         Set<Vector3D> uniqueVertices = new HashSet<Vector3D>();

@@ -16,14 +16,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- * Raytracer Class
- * @author LOG1CRS
- * @author Jafet Rodríguez
+ * Raytracer Class, this class guides the code, calling other important classes
+ *  @author LOG1CRS
+ *  @author Jafet Rodríguez
  */
 public class Raytracer {
 
     /**
-     * Starts Raytracer and initializes a scene, camera and put the objects in scene
+     * Starts Raytracer and initializes a scene, camera, lights and put the objects in scene
      */
     public static void startRaytracer() {
         int arrayTime[] = new int[4];
@@ -59,14 +59,14 @@ public class Raytracer {
         arrayTime[2] = LocalDateTime.now().getSecond();
         arrayTime[3] = LocalDateTime.now().getMinute();
 
-        printRunTimeCode(arrayTime);
+        showRunTimeCode(arrayTime);
     }
 
 
     /**
-     * Creates de BufferedImage
+     * Creates the BufferedImage, get each intersection of each ray with the objects, the lights and creates the image.
      * @param scene
-     * @return BufferedImage
+     * @return BufferedImage the rendered scene with specified resolution from the camera
      */
     private static BufferedImage raytrace(Scene scene) {
         Camera mainCamera = scene.getCamera();
@@ -116,7 +116,7 @@ public class Raytracer {
      * @param value
      * @param min
      * @param max
-     * @return value
+     * @return min or max value
      */
     private static float clamp(float value, float min, float max) {
         if (value < min) {
@@ -143,11 +143,11 @@ public class Raytracer {
 
 
     /**
-     * raycaset checks what is the closest intersection, object by object
+     * raycast checks what is the closest intersection, object by object
      * @param ray
      * @param objects
      * @param caster
-     * @return intersection
+     * @return the closest intersection
      */
     private static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] clippingPlanes) {
         Intersection closestIntersection = null;
@@ -175,7 +175,7 @@ public class Raytracer {
      * Prints the code runtime
      * @param arrayTime
      */
-    private static void printRunTimeCode(int arrayTime[]){
+    private static void showRunTimeCode(int arrayTime[]){
         //position: 0 = initial seconds
         //position: 1 = initial minutes
         //position: 2 = final seconds

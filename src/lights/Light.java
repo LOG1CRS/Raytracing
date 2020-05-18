@@ -8,7 +8,7 @@ import Tools.Vector3D;
 import java.awt.*;
 
 /**
- * Light Class
+ * Light Class, this class contains the basic properties to create a light
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

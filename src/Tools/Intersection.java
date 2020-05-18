@@ -3,7 +3,7 @@ package Tools;
 import Objects.Object3D;
 
 /**
- * Intersection Class
+ * Intersection Class, this class contains the basic properties to an Intersection
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

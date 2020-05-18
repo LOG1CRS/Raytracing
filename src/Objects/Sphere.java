@@ -7,7 +7,7 @@ import Tools.Vector3D;
 import java.awt.*;
 
 /**
- * Sphere Class
+ * Sphere Class, this class creates a kind of 3D object, a Sphere with radius
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

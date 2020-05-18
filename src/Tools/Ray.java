@@ -1,7 +1,7 @@
 package Tools;
 
 /**
- * Ray Class
+ * Ray Class,this class contains the basic properties to a ray
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

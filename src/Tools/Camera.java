@@ -5,7 +5,7 @@ import Objects.Object3D;
 import java.awt.*;
 
 /**
- * Camera Class
+ * Camera Class, this class creates a camera
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -76,9 +76,17 @@ public class Camera extends Object3D {
         return getResolution()[1];
     }
 
+    public float[] getNearFarPlanes() {
+        return nearFarPlanes;
+    }
+
+    public void setNearFarPlanes(float[] nearFarPlanes) {
+        this.nearFarPlanes = nearFarPlanes;
+    }
+
     /**
      *Calculates the ray mesh of the camera and return a two-dimensional matrix with the position of each pixel
-     * @return Vector3D[][]
+     * @return Vector3D[][], position of each pixel in teh camera grid
      */
     public Vector3D[][] calculatePositionsToRay() {
 
@@ -108,14 +116,6 @@ public class Camera extends Object3D {
         }
 
         return positions;
-    }
-
-    public float[] getNearFarPlanes() {
-        return nearFarPlanes;
-    }
-
-    public void setNearFarPlanes(float[] nearFarPlanes) {
-        this.nearFarPlanes = nearFarPlanes;
     }
 
     @Override

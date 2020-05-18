@@ -15,14 +15,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * OBJReader Class
+ * OBJReader Class, this class allows importing .obj files to scene
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public abstract class OBJReader {
 
     /**
-     * Extracts triangles of the OBJ file
+     * Gets the file, parses the text and extracts the triangles from the .obj file
      * @param path
      * @param origin
      * @param color
@@ -51,8 +51,8 @@ public abstract class OBJReader {
                     }
                 } else if (line.startsWith("f ")) {
                     String[] faceComponents = line.split("(\\s)+");
-                    List<Integer> faceVertex = new ArrayList<Integer>();
-                    List<Integer> faceNormal = new ArrayList<Integer>();
+                    List<Integer> faceVertex = new ArrayList<>();
+                    List<Integer> faceNormal = new ArrayList<>();
                     
                     for (int i = 1; i < faceComponents.length; i++) {
                         String[] infoVertex = faceComponents[i].split("/");
