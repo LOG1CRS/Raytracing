@@ -143,7 +143,7 @@ public class Raytracer {
 
 
     /**
-     * raycast checks what is the closest intersection, object by object
+     * Raycast checks what is the closest intersection, object by object
      * @param ray
      * @param objects
      * @param caster

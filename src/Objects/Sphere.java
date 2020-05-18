@@ -30,6 +30,11 @@ public class Sphere extends Object3D {
         this.radius = radius;
     }
 
+    /**
+     * Check if there is an intersection
+     * @param ray
+     * @return The intersection or null if the intersection is behind the camera
+     */
     @Override
     public Intersection getIntersection(Ray ray) {
         double distance = -1;

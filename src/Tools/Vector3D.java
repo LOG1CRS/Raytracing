@@ -130,6 +130,10 @@ public class Vector3D {
         return ZERO.clone();
     }
 
+    /**
+     * Defines the way to print a vector in console
+     * @return the system to print a vector
+     */
     @Override
     public String toString() {
         return "(" + getX() + ", " + getY() + ", " + getZ() + ")";

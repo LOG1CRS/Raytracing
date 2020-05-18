@@ -28,6 +28,11 @@ public class DirectionalLight extends Light {
         this.direction = direction;
     }
 
+    /**
+     *
+     * @param intersection
+     * @return float
+     */
     @Override
     public float getNDotL(Intersection intersection) {
         return (float)Math.max(Vector3D.dotProduct(intersection.getNormal(), Vector3D.scalarMultiplication(getDirection(), -1.0)), 0.0);

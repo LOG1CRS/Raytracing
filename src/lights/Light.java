@@ -30,6 +30,11 @@ public abstract class Light extends Object3D {
         this.intensity = intensity;
     }
 
+    /**
+     * Abstract function, all lights must have this function
+     * @param intersection
+     * @return
+     */
     public abstract float getNDotL(Intersection intersection);
 
     public Intersection getIntersection(Ray ray){

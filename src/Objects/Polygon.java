@@ -1,5 +1,6 @@
 package Objects;
 
+import Tools.Barycentric;
 import Tools.Intersection;
 import Tools.Ray;
 import Tools.Vector3D;
@@ -31,7 +32,7 @@ public class Polygon extends Object3D {
     }
 
     /**
-     * set the shape of the polygon, obtaining each vertex of each triangle
+     * Set the shape of the polygon, obtaining each vertex of each triangle
      * @param triangles
      */
     public void setTriangles(Triangle[] triangles) {
@@ -50,6 +51,11 @@ public class Polygon extends Object3D {
         this.triangles = Arrays.asList(triangles);
     }
 
+    /**
+     * Check if there is an intersection and calculates the barycentric coordinates at that position, calling the Barycentric class
+     * @param ray
+     * @return The intersection or null if the intersection is behind the camera
+     */
     @Override
     public Intersection getIntersection(Ray ray) {
         double distance = -1;
@@ -62,7 +68,13 @@ public class Polygon extends Object3D {
             if(intersection != null && intersectionDistance > 0 && (intersectionDistance < distance ||distance < 0)){
                 distance = intersectionDistance;
                 position = Vector3D.sum(ray.getOrigin(), Vector3D.scalarMultiplication(ray.getDirection(), distance));
-                normal = triangle.getNormal();
+
+                normal = Vector3D.ZERO();
+                double[] uVw = Barycentric.CalculateBarycentricCoordinates(position, triangle);
+                Vector3D[] normals = triangle.getNormals();
+                for(int i = 0; i < uVw.length; i++) {
+                    normal = Vector3D.sum(normal, Vector3D.scalarMultiplication(normals[i], uVw[i]));
+                }
             }
         }
 

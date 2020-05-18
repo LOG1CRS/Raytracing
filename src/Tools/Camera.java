@@ -85,7 +85,7 @@ public class Camera extends Object3D {
     }
 
     /**
-     *Calculates the ray mesh of the camera and return a two-dimensional matrix with the position of each pixel
+     * Calculates the ray mesh of the camera and return a two-dimensional matrix with the position of each pixel
      * @return Vector3D[][], position of each pixel in teh camera grid
      */
     public Vector3D[][] calculatePositionsToRay() {
