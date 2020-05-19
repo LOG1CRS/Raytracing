@@ -1,7 +1,7 @@
 # Raytracing Engine
 
 Final project for my Multimedia & Computer Graphics course at Universidad Panamericana.
-The project is a basic raytracing engine made with Java.
+The project is a raytracing engine made with Java.
 The code allows to import .obj files or create basic figures, create scenes, lights, and render everything in scene.
 
 ## Getting Started
@@ -14,7 +14,7 @@ You can clone or download the project and run it with IntelliJ IDEA, NETBEANS or
 
 ## Features
 
- - Crete Objects
+ - Create Objects
 	 - Sphere
 	 - Triangle
 	 - Polygon
@@ -55,7 +55,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## What did I learned from this project?
 
-* Learned how a Raytracing Engine Works
+* Learned how a Raytracing Engine works
 * Object oriented programming thinking
+* vector calculus
 * How to create a scalable project
 * Java advanced
