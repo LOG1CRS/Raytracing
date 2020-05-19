@@ -1,12 +1,12 @@
 # Raytracing Engine
 
 Final project for my Multimedia & Computer Graphics course at Universidad Panamericana.
-The project is a basic raytracing made with Java.
+The project is a basic raytracing engine made with Java.
 The code allows to import .obj files or create basic figures, create scenes, lights, and render everything in scene.
 
 ## Getting Started
 
-You can clone or download the project and run it with IntelliJ IDEA, NETBEANS or another Java IDE. You can also configure scenes, cameras, lights and objects, the code allows to import .obj files or create them manually.
+You can clone or download the project and run it with IntelliJ IDEA, NETBEANS or another Java IDE. You can also configure scenes, cameras, lights and objects, the code allows to import .obj files or create basic shapes manually.
 
 ## Image Rendered
 
