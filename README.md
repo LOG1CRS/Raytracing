@@ -42,7 +42,7 @@ Contributions are closed.
 
 See the [tags on this repository](https://github.com/LOG1CRS/Raytracing/releases). 
 
-If you want to see the progress of the project in a more visual way, you can select the [image.png](https://github.com/LOG1CRS/Raytracing-Engine/blob/master/image.png) file and toggle between the different labels.
+If you want to see the progress of the project in a more visual way, you can select the [image.png](https://github.com/LOG1CRS/Raytracing-Engine/blob/master/image.png) file and toggle between the different tags.
 
 ## Authors
 
