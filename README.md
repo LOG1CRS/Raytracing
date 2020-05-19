@@ -42,6 +42,8 @@ Contributions are closed.
 
 See the [tags on this repository](https://github.com/LOG1CRS/Raytracing/releases). 
 
+If you want to see the progress of the project in a more visual way, you can select the [image.png](https://github.com/LOG1CRS/Raytracing-Engine/blob/master/image.png) file and toggle between the different labels.
+
 ## Authors
 
 * **André Marco Ruiz Sandoval** - *Student* - [LOG1CRS](https://github.com/LOG1CRS)
@@ -50,8 +52,6 @@ See the [tags on this repository](https://github.com/LOG1CRS/Raytracing/releases
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/LOG1CRS/Raytracing/blob/master/LICENSE) file for details.
-
-If you want to see the progress of the project in a more visual way, you can select the [image.png](https://github.com/LOG1CRS/Raytracing-Engine/blob/master/image.png) file and toggle between the different labels.
 
 ## What did I learned from this project?
 
