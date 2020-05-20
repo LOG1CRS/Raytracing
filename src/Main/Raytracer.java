@@ -37,18 +37,18 @@ public class Raytracer {
 
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800, 8.2f, 50f));
-        scene01.addLight(new PointLight(new Vector3D(-1.2f, 1.5f, -1f), Color.WHITE, 1));
+        scene01.addLight(new PointLight(new Vector3D(-1.2f, 2.5f, -2f), Color.WHITE, 2.5));
         /*scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, 0.0, 1.0), Color.WHITE, 1.1));
         scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, -1.0, 0.0), Color.GREEN, 0.1));
         scene01.addObject(new Sphere(new Vector3D(0f, 1f, 5f), 0.5f, Color.RED));
         scene01.addObject(new Sphere(new Vector3D(0.35f, 1f, 4.5f), 0.3f, Color.BLUE));
         scene01.addObject(new Sphere(new Vector3D(4.85f, 1f, 4.5f), 0.3f, Color.PINK));
         scene01.addObject(new Sphere(new Vector3D(2.85f, 1f, 304.5f), 0.5f, Color.BLUE));*/
-        scene01.addObject(new Sphere(new Vector3D(0f, -0.5f, 4.5f), 1f, new Color(15, 189, 186)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(2f, -0.8f, 1f), Color.green));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/CubeQuad.obj", new Vector3D(-3.5f, -0.6f, 8f), Color.red));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(0f, 1f, 1.5f), Color.LIGHT_GRAY));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0f, -2.3f, 1.5f), Color.BLUE));
+        scene01.addObject(new Sphere(new Vector3D(0f, -0.5f, 7.5f), 1f, new Color(15, 189, 186)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(2.5f, -0.8f, 4f), Color.green));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/CubeQuad.obj", new Vector3D(-3.8f, -0.5f, 9.3f), Color.red));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(0f, 1f, 1.2f), Color.LIGHT_GRAY));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0f, -2.8f, 4.5f), Color.BLUE));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
@@ -94,7 +94,7 @@ public class Raytracer {
                     pixelColor = Color.BLACK;
                     for (Light light : lights) {
                         float nDotL = light.getNDotL(closestIntersection);
-                        float intensity = (float) light.getIntensity() * nDotL;
+                        float intensity = (float) light.getIntensity(light.getPosition(), closestIntersection.getPosition()) * nDotL;
                         Color lightColor = light.getColor();
                         Color objColor = closestIntersection.getObject().getColor();
                         float[] lightColors = new float[]{lightColor.getRed() / 255.0f, lightColor.getGreen() / 255.0f, lightColor.getBlue() / 255.0f};
