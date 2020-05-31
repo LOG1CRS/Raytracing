@@ -1,11 +1,11 @@
 package Objects;
 import Interfaces.IIntersectable;
-import Tools.Vector3D;
+import Tools.MathTools.Vector3D;
 
 import java.awt.*;
 
 /**
- * Object3D Class, this class contains the basic properties to crate a 3D object
+ * Object3D Class, this class contains the basic properties to crate a 3D object.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

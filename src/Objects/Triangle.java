@@ -1,12 +1,12 @@
 package Objects;
 
 import Interfaces.IIntersectable;
-import Tools.Intersection;
-import Tools.Ray;
-import Tools.Vector3D;
+import Tools.MathTools.Intersection;
+import Tools.MathTools.Ray;
+import Tools.MathTools.Vector3D;
 
 /**
- * Triangle Class, this class creates
+ * Triangle Class, this class creates triangles.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -20,7 +20,7 @@ public class Triangle implements IIntersectable {
     //Constructors
 
     /**
-     * Constructor A, gets only each vertex position in three variables and puts normal values in null
+     * Constructor A, gets only each vertex position in three variables and puts normal values in null.
      * @param vertex1
      * @param vertex2
      * @param vertex3
@@ -31,7 +31,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Constructor B, gets each vertex position in three variables and also gets three variables for normal values
+     * Constructor B, gets each vertex position in three variables and also gets three variables for normal values.
      * @param vertex1
      * @param vertex2
      * @param vertex3
@@ -45,7 +45,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Constructor C, gets an array of vertex and an array of normal values
+     * Constructor C, gets an array of vertex and an array of normal values.
      * @param vertices
      * @param normal
      */
@@ -64,7 +64,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Set triangle vertex with three variables
+     * Set triangle vertex with three variables.
      * @param vertex1
      * @param vertex2
      * @param vertex3
@@ -75,7 +75,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Set triangle vertex with array
+     * Set triangle vertex with array.
      * @param vertices
      */
     private void setVertices(Vector3D[] vertices) {
@@ -84,7 +84,7 @@ public class Triangle implements IIntersectable {
 
     /**
      * If the object doesn't have normal values at each vertex,
-     * this function adds the normal value of the face at each vertex
+     * this function adds the normal value of the face at each vertex.
      * @return shape normals
      */
     public Vector3D[] getNormals() {
@@ -96,7 +96,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Return the normal of each vertex or creates the normal if normal equals null
+     * Return the normal of each vertex or creates the normal if normal equals null.
      * @return normal of the vertex
      */
     public Vector3D getNormal() {
@@ -122,7 +122,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Set vertex normal values with array
+     * Set vertex normal values with array.
      * @param normals
      */
     public void setNormals(Vector3D[] normals) {
@@ -130,7 +130,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Set vertex normal values with three variables
+     * Set vertex normal values with three variables.
      * @param normal1
      * @param normal2
      * @param normal3
@@ -141,7 +141,7 @@ public class Triangle implements IIntersectable {
     }
 
     /**
-     * Check if there is an intersection
+     * Check if there is an intersection.
      * @param ray
      * @return The intersection
      * @see <a href="https://cadxfem.org/inf/Fast%20MinimumStorage%20RayTriangle%20Intersection.pdf">Moller-Trumbore intersection algorithm</a>

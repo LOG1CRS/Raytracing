@@ -1,7 +1,7 @@
 package Lights;
 
-import Tools.Intersection;
-import Tools.Vector3D;
+import Tools.MathTools.Intersection;
+import Tools.MathTools.Vector3D;
 
 import java.awt.*;
 

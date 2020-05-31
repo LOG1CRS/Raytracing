@@ -2,7 +2,7 @@ package Tools.FileReader;
 
 import Objects.Polygon;
 import Objects.Triangle;
-import Tools.Vector3D;
+import Tools.MathTools.Vector3D;
 
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -17,14 +17,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * OBJReader Class, this class allows importing .obj files to scene
+ * OBJReader Class, this class allows importing .obj files to scene.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
 public abstract class OBJReader {
 
     /**
-     * Gets the file, parses the text and extracts the triangles position and normal values from the .obj file
+     * Gets the file, parses the text and extracts the triangles position and normal values from the .obj file.
      * @param path
      * @param origin
      * @param color

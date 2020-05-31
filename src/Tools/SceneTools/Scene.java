@@ -1,4 +1,4 @@
-package Tools;
+package Tools.SceneTools;
 
 import Lights.Light;
 import Objects.Object3D;
@@ -7,7 +7,7 @@ import Objects.Object3D;
 import java.util.ArrayList;
 
 /**
- * Scene Class, this class contains the basic properties to crate a scene
+ * Scene Class, this class contains the basic properties to crate a scene.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -49,7 +49,7 @@ public class Scene {
     }
 
     /**
-     * Adds object to scene
+     * Adds object to scene.
      * @param object
      */
     public void addObject(Object3D object){
@@ -57,7 +57,7 @@ public class Scene {
     }
 
     /**
-     * Adds light to scene
+     * Adds light to scene.
      * @param light
      */
     public void addLight(Light light){

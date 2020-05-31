@@ -1,9 +1,9 @@
-package Tools;
+package Tools.MathTools;
 
 import Objects.Triangle;
 
 /**
- * Barycentric class, this class calculates a barycentric coordinate within of a triangle
+ * Barycentric class, this class calculates a barycentric coordinate within of a triangle.
  * @author Jafet Rodríguez
  * @author LOG1CRS
  * @see <a href="https://www.amazon.com/Real-Time-Collision-Detection-Interactive-Technology/dp/1558607323">Christer Ericson's Real-Time Collision Detection</a>

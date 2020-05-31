@@ -1,7 +1,7 @@
-package Tools;
+package Tools.MathTools;
 
 /**
- * Vector3D Class, this class contains all calculations to use 3D vectors
+ * Vector3D Class, this class contains all calculations to use 3D vectors.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -43,7 +43,7 @@ public class Vector3D {
     }
 
     /**
-     * Dot product of two vectors
+     * Dot product of two vectors.
      * @param vectorA
      * @param vectorB
      * @return double the result of dot product
@@ -53,7 +53,7 @@ public class Vector3D {
     }
 
     /**
-     * Cross product of two vectors
+     * Cross product of two vectors.
      * @param vectorA
      * @param vectorB
      * @return Vector3D the result of cross product
@@ -65,8 +65,8 @@ public class Vector3D {
     }
 
     /**
-     * Magnitude of a vector
-     * We can return the square root of the Dot product of the same vector to get the magnitude of that vector
+     * Magnitude of a vector.
+     * We can return the square root of the Dot product of the same vector to get the magnitude of that vector.
      * @param vectorA
      * @return double the result of magnitude
      */
@@ -75,7 +75,7 @@ public class Vector3D {
     }
 
     /**
-     * Sum of two vectors
+     * Sum of two vectors.
      * @param vectorA
      * @param vectorB
      * @return Vector3D the result of the sum of two vectors
@@ -85,7 +85,7 @@ public class Vector3D {
     }
 
     /**
-     * Subtraction of two vectors
+     * Subtraction of two vectors.
      * @param vectorA
      * @param vectorB
      * @return Vector3D the result of the subtraction of two vectors
@@ -95,7 +95,7 @@ public class Vector3D {
     }
 
     /**
-     * Normalization of a vector
+     * Normalization of a vector.
      * @param vectorA
      * @return Vector3D the result of the normalize of a vector
      */
@@ -105,7 +105,7 @@ public class Vector3D {
     }
 
     /**
-     * Multiply a vector by a scalar
+     * Multiply a vector by a scalar.
      * @param vectorA
      * @param scalar
      * @return Vector3D the result of multiply vector to a scalar
@@ -115,7 +115,7 @@ public class Vector3D {
     }
 
     /**
-     * Clones the vector that is calling this function to keep separate references in memory
+     * Clones the vector that is calling this function to keep separate references in memory.
      * @return Vector3D the same vector
      */
     public Vector3D clone(){
@@ -123,7 +123,7 @@ public class Vector3D {
     }
 
     /**
-     * Returns a vector zero
+     * Returns a vector zero.
      * @return Vector3D ZERO
      */
     public static Vector3D ZERO(){
@@ -131,7 +131,7 @@ public class Vector3D {
     }
 
     /**
-     * Defines the way to print a vector in console
+     * Defines the way to print a vector in console.
      * @return the system to print a vector
      */
     @Override

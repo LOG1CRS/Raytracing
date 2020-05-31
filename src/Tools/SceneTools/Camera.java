@@ -1,11 +1,14 @@
-package Tools;
+package Tools.SceneTools;
 
 import Objects.Object3D;
+import Tools.MathTools.Intersection;
+import Tools.MathTools.Ray;
+import Tools.MathTools.Vector3D;
 
 import java.awt.*;
 
 /**
- * Camera Class, this class creates a camera
+ * Camera Class, this class creates a camera.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -85,7 +88,7 @@ public class Camera extends Object3D {
     }
 
     /**
-     * Calculates the ray mesh of the camera and return a two-dimensional matrix with the position of each pixel
+     * Calculates the ray mesh of the camera and return a two-dimensional matrix with the position of each pixel.
      * @return Vector3D[][], position of each pixel in teh camera grid
      */
     public Vector3D[][] calculatePositionsToRay() {

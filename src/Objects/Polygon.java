@@ -1,9 +1,9 @@
 package Objects;
 
-import Tools.Barycentric;
-import Tools.Intersection;
-import Tools.Ray;
-import Tools.Vector3D;
+import Tools.MathTools.Barycentric;
+import Tools.MathTools.Intersection;
+import Tools.MathTools.Ray;
+import Tools.MathTools.Vector3D;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Polygon Class, this class creates a kind of 3D object with triangles
+ * Polygon Class, this class creates a kind of 3D object with triangles.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -32,7 +32,7 @@ public class Polygon extends Object3D {
     }
 
     /**
-     * Set the shape of the polygon, obtaining each vertex of each triangle
+     * Set the shape of the polygon, obtaining each vertex of each triangle.
      * @param triangles
      */
     public void setTriangles(Triangle[] triangles) {
@@ -52,7 +52,7 @@ public class Polygon extends Object3D {
     }
 
     /**
-     * Check if there is an intersection and calculates the barycentric coordinates at that position, calling the Barycentric class
+     * Check if there is an intersection and calculates the barycentric coordinates at that position, calling the Barycentric class.
      * @param ray
      * @return The intersection or null if the intersection is behind the camera
      */

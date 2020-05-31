@@ -1,9 +1,9 @@
-package Tools;
+package Tools.MathTools;
 
 import Objects.Object3D;
 
 /**
- * Intersection Class, this class contains the basic properties to an Intersection
+ * Intersection Class, this class contains the basic properties to an Intersection.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */

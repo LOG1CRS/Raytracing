@@ -1,39 +1,40 @@
 package Main;
 
-import Lights.DirectionalLight;
 import Lights.Light;
 import Lights.PointLight;
 import Objects.Object3D;
 import Objects.Sphere;
-import Tools.*;
 import Tools.FileReader.OBJReader;
+import Tools.MathTools.Intersection;
+import Tools.MathTools.Ray;
+import Tools.MathTools.Vector3D;
+import Tools.RunTime.RunTimeCalculator;
+import Tools.SceneTools.Camera;
+import Tools.SceneTools.Scene;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
 
 /**
- * Raytracer Class, this class guides the code, calling other important classes
+ *  Raytracer Class, this class guides the code, calling other important classes.
  *  @author LOG1CRS
  *  @author Jafet Rodríguez
  */
 public class Raytracer {
 
     /**
-     * Starts Raytracer and initializes a scene, camera, lights and put the objects in scene
+     * Starts Raytracer and initializes a scene, camera, lights and put the objects in scene.
      */
     public static void startRaytracer() {
-        int arrayTime[] = new int[4];
-
         System.out.println("Raytracer is running!");
         System.out.println("Please wait...");
 
-        arrayTime[0] = LocalDateTime.now().getSecond();
-        arrayTime[1] = LocalDateTime.now().getMinute();
+        Instant startTime = RunTimeCalculator.start();
 
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
@@ -43,8 +44,8 @@ public class Raytracer {
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227)));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205)));
+        //scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27)));
+        //scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205)));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,21.8,30), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN));
@@ -59,10 +60,8 @@ public class Raytracer {
             System.out.println("Something failed");
         }
 
-        arrayTime[2] = LocalDateTime.now().getSecond();
-        arrayTime[3] = LocalDateTime.now().getMinute();
-
-        showRunTimeCode(arrayTime);
+        Instant finishTime = RunTimeCalculator.end();
+        RunTimeCalculator.printRuntime(startTime, finishTime);
     }
 
 
@@ -132,7 +131,7 @@ public class Raytracer {
     }
 
     /**
-     * Allows to add custom RGB color to an object
+     * Allows to add custom RGB color to an object.
      * @param original
      * @param otherColor
      * @return new Color
@@ -146,7 +145,7 @@ public class Raytracer {
 
 
     /**
-     * Raycast checks what is the closest intersection, object by object
+     * Raycast checks what is the closest intersection, object by object.
      * @param ray
      * @param objects
      * @param caster
@@ -172,22 +171,5 @@ public class Raytracer {
         }
 
         return closestIntersection;
-    }
-
-    /**
-     * Prints the code runtime
-     * @param arrayTime
-     */
-    private static void showRunTimeCode(int arrayTime[]){
-        //position: 0 = initial seconds
-        //position: 1 = initial minutes
-        //position: 2 = final seconds
-        //position: 3 = final minutes
-
-        if(arrayTime[1] == arrayTime[3]){
-            System.out.println("The code runtime was: " + (arrayTime[2] - arrayTime[0]) + " seconds");
-        } else{
-            System.out.println("The code runtime was: " + ((arrayTime[2] + 60) - arrayTime[0]) + " seconds");
-        }
     }
 }

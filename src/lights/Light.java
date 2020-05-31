@@ -1,14 +1,14 @@
 package Lights;
 
 import Objects.Object3D;
-import Tools.Intersection;
-import Tools.Ray;
-import Tools.Vector3D;
+import Tools.MathTools.Intersection;
+import Tools.MathTools.Ray;
+import Tools.MathTools.Vector3D;
 
 import java.awt.*;
 
 /**
- * Light Class, this class contains the basic properties to create a light
+ * Light Class, this class contains the basic properties to create a light.
  * @author LOG1CRS
  * @author Jafet Rodríguez
  */
@@ -36,7 +36,7 @@ public abstract class Light extends Object3D {
     }
 
     /**
-     * Abstract function, all lights must have this function
+     * Abstract function, all lights must have this function.
      * @param intersection
      * @return
      */
