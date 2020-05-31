@@ -10,7 +10,7 @@ You can clone or download the project and run it with IntelliJ IDEA, NETBEANS or
 
 ## Image Rendered
 
-![](https://lh3.googleusercontent.com/qjo-7hIn62QceATdn3yiXWnQGnNq7HLPOxq1R16PiomPf6jHlRBX-oz5va2W5JRUbINCMXF77h1GBFFS71ozmH0lrottBEqtbCogzy1DeDkHsqNkmyzfdmBLFWQc1Whoxdtf8Vw-VFGO8eGzPl5VxBQqGo7zkcOejvJ3x5VFQuhJtt7yQmsNFP6HGyodq2Hi-AiN8o2Vu5FErfc8PT7-QNY0K_Mf3_daTZ8YyEESpGgvb8rf19UVVFGhyF-mmgupH1FBM24tTIjj32rFoW2uUWD1vBzCUXnalRIuDtAfQd0pIZQnNJKE-U58zuI2sv-bZ4ghTmCcbrPhuF25jyHN_k7deVRX0uZR6cNB7Tr2_Vk15jNleYFCkxu5Ss8f5Oi71kDn1zu32eJ5OLLOAkoVa0QLyPj7JeDjdBRMTfnnEphRB5T9elS0xin4cWWWzsaMcxU1Bo4utk5GqA_y-APTrVPjN8BZiDYzDORM3C-AFEBUUC5JFsD49dTzKUHH-4yfWgNRWCODXeCUU5lfImpL4bip4MfmtxxytFaACT9mfbjQ5fvw71L5ZiMmGNeoGTqPs5jJZz5p50ZjZ525CYqVTyAwSBiDB-J0kWN4U9x5kNTwDosGY26MZEGObXRyOh1U7aitasMHSxG9kULJYMTk8n5JJz7jkCVbJEDOJl3uBG3kdyPM-c4RukAFooYrog=s800-no?authuser=1)
+![](https://raw.githubusercontent.com/LOG1CRS/Raytracing-Engine/v0.8/image.png)
 
 ## Features
 
@@ -26,6 +26,7 @@ You can clone or download the project and run it with IntelliJ IDEA, NETBEANS or
 	 - Point light
  - Clipping planes
  - Phong shading 
+ - Light falloff
  - Raycast
  - Render an image
   
