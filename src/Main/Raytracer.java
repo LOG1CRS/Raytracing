@@ -36,19 +36,20 @@ public class Raytracer {
         arrayTime[1] = LocalDateTime.now().getMinute();
 
         Scene scene01 = new Scene();
-        scene01.setCamera(new Camera(new Vector3D(0, 0, -8), 160, 160, 800, 800, 8.2f, 50f));
-        scene01.addLight(new PointLight(new Vector3D(-1.2f, 2.5f, -2f), Color.WHITE, 2.5));
-        /*scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, 0.0, 1.0), Color.WHITE, 1.1));
-        scene01.addLight(new DirectionalLight(Vector3D.ZERO(), new Vector3D(0.0, -1.0, 0.0), Color.GREEN, 0.1));
-        scene01.addObject(new Sphere(new Vector3D(0f, 1f, 5f), 0.5f, Color.RED));
-        scene01.addObject(new Sphere(new Vector3D(0.35f, 1f, 4.5f), 0.3f, Color.BLUE));
-        scene01.addObject(new Sphere(new Vector3D(4.85f, 1f, 4.5f), 0.3f, Color.PINK));
-        scene01.addObject(new Sphere(new Vector3D(2.85f, 1f, 304.5f), 0.5f, Color.BLUE));*/
-        scene01.addObject(new Sphere(new Vector3D(0f, -0.5f, 7.5f), 1f, new Color(15, 189, 186)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(2.5f, -0.8f, 4f), Color.green));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/CubeQuad.obj", new Vector3D(-3.8f, -0.5f, 9.3f), Color.red));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(0f, 1f, 1.2f), Color.LIGHT_GRAY));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0f, -2.8f, 4.5f), Color.BLUE));
+        scene01.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
+        scene01.addLight(new PointLight(new Vector3D(0f, 50f, -65f), Color.WHITE, 40));
+        //scene01.addLight(new PointLight(new Vector3D(0f, 10f, 0f), Color.WHITE, 5));
+        scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, new Color(28, 108, 169)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,21.8,30), Color.white));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white));
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
