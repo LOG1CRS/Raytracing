@@ -39,6 +39,7 @@ public class Raytracer {
 
         Instant startTime = RunTimeCalculator.start();
 
+        //Design 1
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
         //scene01.addLight(new PointLight(new Vector3D(0f, 21.8f, 24f), Color.WHITE, 3));
@@ -49,11 +50,36 @@ public class Raytracer {
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27)));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,21.8,30), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white));
+
+
+        //Design 2
+        /*Scene scene02 = new Scene();
+        scene02.setCamera(new Camera(new Vector3D(0, -1, -5.5), 135, 135, 1024, 1024, 0f, 100f));
+        scene02.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
+        scene02.addObject(new Sphere(new Vector3D(0f, -5.8f, 20f), 2.5f, new Color(200, 25, 8)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(0,-16,20), new Color(158, 131, 87)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(13f, -8f, 27f), new Color(255, 243, 205)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(13,-16,27), new Color(158, 131, 87)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-16,-13, 30), new Color(169,217,227)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(-13,-16,27), new Color(158, 131, 87)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,70), Color.white));*/
+
+        /*Scene scene03 = new Scene();
+        scene03.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
+        scene03.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
+        scene03.addObject(new Sphere(new Vector3D(10f, -9f, 20f), 2f, new Color(56, 19, 96)));
+        scene03.addObject(new Sphere(new Vector3D(-10f, 3f, 20f), 1.8f, new Color(6, 223, 215)));
+        scene03.addObject(new Sphere(new Vector3D(-20f, -10f, 35f), 2f, new Color(222, 255, 140)));
+        scene03.addObject(new Sphere(new Vector3D(10f, 15f, 35f), 2.5f, new Color(255, 204, 0)));
+        scene03.addObject(new Sphere(new Vector3D(-5f, 10f, 30f), 2f, new Color(92, 119, 87)));
+        scene03.addObject(new Sphere(new Vector3D(8f,  1f, 27f), 2f, new Color(254, 170, 170)));
+        scene03.addObject(new Sphere(new Vector3D(-3f, -5.8f, 22f), 2.5f, new Color(132, 24, 24)));
+        scene03.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,80), Color.white));*/
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
