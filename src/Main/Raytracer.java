@@ -19,6 +19,9 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  *  Raytracer Class, this class guides the code, calling other important classes.
@@ -38,14 +41,14 @@ public class Raytracer {
 
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
-        scene01.addLight(new PointLight(new Vector3D(0f, 50f, -65f), Color.WHITE, 40));
-        //scene01.addLight(new PointLight(new Vector3D(0f, 10f, 0f), Color.WHITE, 5));
+        //scene01.addLight(new PointLight(new Vector3D(0f, 21.8f, 24f), Color.WHITE, 3));
+        scene01.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
         scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, new Color(28, 108, 169)));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227)));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white));
-        //scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27)));
-        //scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205)));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,21.8,30), Color.white));
         scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN));
@@ -71,6 +74,9 @@ public class Raytracer {
      * @return BufferedImage the rendered scene with specified resolution from the camera
      */
     private static BufferedImage raytrace(Scene scene) {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(8);
+
         Camera mainCamera = scene.getCamera();
         ArrayList<Light> lights = scene.getLights();
         float[] nearFarPlanes = mainCamera.getNearFarPlanes();
@@ -85,6 +91,33 @@ public class Raytracer {
                 double z = positionsToRaytrace[i][j].getZ() + mainCamera.getPosition().getZ();
 
                 Ray ray = new Ray(mainCamera.getPosition(), new Vector3D(x, y, z));
+                Runnable runnable = draw(i, j, mainCamera, ray, objects, nearFarPlanes, lights, image);
+                executorService.execute(runnable);
+            }
+        }
+
+        executorService.shutdown();
+        try{
+            if(!executorService.awaitTermination(10, TimeUnit.MINUTES)){
+                executorService.shutdownNow();
+            }
+        }catch (InterruptedException e){
+            executorService.shutdownNow();
+        } finally {
+            if(!executorService.isTerminated()){
+                System.out.println("Cancel non-finished");
+            }
+        }
+        executorService.isTerminated();
+
+        return image;
+    }
+
+    private static Runnable draw(int i, int j, Camera mainCamera, Ray ray, ArrayList<Object3D> objects, float[] nearFarPlanes, ArrayList<Light> lights, BufferedImage image){
+        Runnable aRunnable = new Runnable() {
+            @Override
+            public void run() {
+
                 float cameraZ = (float) mainCamera.getPosition().getZ();
                 Intersection closestIntersection = raycast(ray, objects, null, new float[]{cameraZ + nearFarPlanes[0], cameraZ + nearFarPlanes[1]});
 
@@ -106,11 +139,14 @@ public class Raytracer {
                         pixelColor = addColor(pixelColor, diffuse);
                     }
                 }
-                image.setRGB(i, j, pixelColor.getRGB());
+                setRGB(image, i, j, pixelColor);
             }
-        }
+        };
+        return aRunnable;
+    }
 
-        return image;
+    private static synchronized void setRGB(BufferedImage image, int i, int j, Color pixelColor){
+        image.setRGB(i, j, pixelColor.getRGB());
     }
 
     /**
