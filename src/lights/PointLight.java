@@ -16,7 +16,7 @@ public class PointLight extends Light {
     }
 
     /**
-     *
+     * getNDotL calculates how this light works with objects
      * @param intersection
      * @return
      */

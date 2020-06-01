@@ -91,6 +91,8 @@ public class Raytracer {
                 double z = positionsToRaytrace[i][j].getZ() + mainCamera.getPosition().getZ();
 
                 Ray ray = new Ray(mainCamera.getPosition(), new Vector3D(x, y, z));
+
+                //Here begins the parallel system
                 Runnable runnable = draw(i, j, mainCamera, ray, objects, nearFarPlanes, lights, image);
                 executorService.execute(runnable);
             }
@@ -113,6 +115,18 @@ public class Raytracer {
         return image;
     }
 
+    /**
+     * draw is a Runnable function, and runs parallel with multithreading
+     * @param i
+     * @param j
+     * @param mainCamera
+     * @param ray
+     * @param objects
+     * @param nearFarPlanes
+     * @param lights
+     * @param image
+     * @return aRunnable,
+     */
     private static Runnable draw(int i, int j, Camera mainCamera, Ray ray, ArrayList<Object3D> objects, float[] nearFarPlanes, ArrayList<Light> lights, BufferedImage image){
         Runnable aRunnable = new Runnable() {
             @Override
@@ -145,6 +159,13 @@ public class Raytracer {
         return aRunnable;
     }
 
+    /**
+     * setRGB is a synchronized function that allows to Runnable function share the same resource
+     * @param image
+     * @param i
+     * @param j
+     * @param pixelColor
+     */
     private static synchronized void setRGB(BufferedImage image, int i, int j, Color pixelColor){
         image.setRGB(i, j, pixelColor.getRGB());
     }
