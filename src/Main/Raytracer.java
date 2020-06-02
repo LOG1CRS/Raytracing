@@ -101,7 +101,7 @@ public class Raytracer {
      */
     private static BufferedImage raytrace(Scene scene) {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(8);
+        ExecutorService executorService = Executors.newFixedThreadPool(6);
 
         Camera mainCamera = scene.getCamera();
         ArrayList<Light> lights = scene.getLights();
@@ -175,7 +175,16 @@ public class Raytracer {
                         for (int colorIndex = 0; colorIndex < objColors.length; colorIndex++) {
                             objColors[colorIndex] *= intensity * lightColors[colorIndex];
                         }
+
+                        //This ray will come out from the position of the light
+                        Ray shadowRay = new Ray(closestIntersection.getPosition(), light.getPosition());
+                        Intersection rayShadowIntersection = raycast(shadowRay, objects, closestIntersection.getObject(), new float[]{cameraZ + nearFarPlanes[0], cameraZ + nearFarPlanes[1]});
+
                         Color diffuse = new Color(clamp(objColors[0], 0, 1),clamp(objColors[1], 0, 1),clamp(objColors[2], 0, 1));
+                        //if there are intersections before intersection with the object, there is a shadow
+                        if(rayShadowIntersection != null){
+                            diffuse = Color.BLACK;
+                        }
                         pixelColor = addColor(pixelColor, diffuse);
                     }
                 }
