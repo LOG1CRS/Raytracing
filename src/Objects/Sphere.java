@@ -1,5 +1,6 @@
 package Objects;
 
+import Objects.ObjectMaterial.Material;
 import Tools.MathTools.Intersection;
 import Tools.MathTools.Ray;
 import Tools.MathTools.Vector3D;
@@ -14,10 +15,11 @@ import java.awt.*;
 public class Sphere extends Object3D {
 
     private float radius;
+    private Material material;
 
     //Constructor
-    public Sphere(Vector3D position, float radius, Color color) {
-        super(position, color);
+    public Sphere(Vector3D position, float radius, Color color, Material material) {
+        super(position, color, material);
         setRadius(radius);
     }
 

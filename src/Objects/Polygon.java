@@ -1,5 +1,6 @@
 package Objects;
 
+import Objects.ObjectMaterial.Material;
 import Tools.MathTools.Barycentric;
 import Tools.MathTools.Intersection;
 import Tools.MathTools.Ray;
@@ -18,11 +19,12 @@ import java.util.Set;
  */
 public class Polygon extends Object3D {
 
-    public List<Triangle> triangles;
+    private List<Triangle> triangles;
+    private Material material;
 
     //Constructor
-    public Polygon(Vector3D position, Triangle[] triangles, Color color){
-        super(position, color);
+    public Polygon(Vector3D position, Triangle[] triangles, Color color, Material material){
+        super(position, color, material);
         setTriangles(triangles);
     }
 

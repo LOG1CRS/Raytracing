@@ -1,5 +1,6 @@
 package Objects;
 import Interfaces.IIntersectable;
+import Objects.ObjectMaterial.Material;
 import Tools.MathTools.Vector3D;
 
 import java.awt.*;
@@ -13,11 +14,13 @@ public abstract class Object3D implements IIntersectable {
 
     private Vector3D position;
     private Color color;
+    private Material material;
 
     //Constructor
-    public Object3D(Vector3D position, Color color) {
+    public Object3D(Vector3D position, Color color, Material material) {
         setPosition(position);
         setColor(color);
+        setMaterial(material);
     }
 
     //Getters & Setters
@@ -35,5 +38,13 @@ public abstract class Object3D implements IIntersectable {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 }

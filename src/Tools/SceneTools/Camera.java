@@ -1,6 +1,7 @@
 package Tools.SceneTools;
 
 import Objects.Object3D;
+import Objects.ObjectMaterial.Material;
 import Tools.MathTools.Intersection;
 import Tools.MathTools.Ray;
 import Tools.MathTools.Vector3D;
@@ -20,10 +21,11 @@ public class Camera extends Object3D {
     // 0 is width and 1 is height
     private int[] resolution;
     private float[] nearFarPlanes = new float[2];
+    private static Material material = new Material(0,0,0,0);
 
     //Constructor
     public Camera(Vector3D position, float fieldOfViewHorizontal, float fieldOfViewVertical, int widthResolution, int heightResolution, float nearPlane, float farPlane) {
-        super(position, Color.black);
+        super(position, Color.black, material);
         setFieldOfViewHorizontal(fieldOfViewHorizontal);
         setFieldOfViewVertical(fieldOfViewVertical);
         setResolution(new int[]{widthResolution, heightResolution});

@@ -3,6 +3,7 @@ package Main;
 import Lights.Light;
 import Lights.PointLight;
 import Objects.Object3D;
+import Objects.ObjectMaterial.Material;
 import Objects.Sphere;
 import Tools.FileReader.OBJReader;
 import Tools.MathTools.Intersection;
@@ -44,42 +45,42 @@ public class Raytracer {
         scene01.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
         //scene01.addLight(new PointLight(new Vector3D(0f, 21.8f, 24f), Color.WHITE, 3));
         scene01.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
-        scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, new Color(28, 108, 169)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,21.8,30), Color.white));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white));
-
+        scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, new Color(28, 108, 169), new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227), new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white, new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white, new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27), new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205), new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,21.8,30), Color.white, new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN, new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED, new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white, new Material(0,0,0,0)));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white, new Material(0,0,0,0)));
 
         //Design 2
         /*Scene scene02 = new Scene();
         scene02.setCamera(new Camera(new Vector3D(0, -1, -5.5), 135, 135, 1024, 1024, 0f, 100f));
         scene02.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
-        scene02.addObject(new Sphere(new Vector3D(0f, -5.8f, 20f), 2.5f, new Color(200, 25, 8)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(0,-16,20), new Color(158, 131, 87)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(13f, -8f, 27f), new Color(255, 243, 205)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(13,-16,27), new Color(158, 131, 87)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-16,-13, 30), new Color(169,217,227)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(-13,-16,27), new Color(158, 131, 87)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,70), Color.white));*/
+        scene02.addObject(new Sphere(new Vector3D(0f, -5.8f, 20f), 2.5f, new Color(200, 25, 8), new Material(0,0,0,0)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(0,-16,20), new Color(158, 131, 87), new Material(0,0,0,0)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(13f, -8f, 27f), new Color(255, 243, 205), new Material(0,0,0,0)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(13,-16,27), new Color(158, 131, 87), new Material(0,0,0,0)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-16,-13, 30), new Color(169,217,227), new Material(0,0,0,0)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(-13,-16,27), new Color(158, 131, 87), new Material(0,0,0,0)));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,70), Color.white, new Material(0,0,0,0)));*/
 
+        //Design 3
         /*Scene scene03 = new Scene();
         scene03.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
         scene03.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
-        scene03.addObject(new Sphere(new Vector3D(10f, -9f, 20f), 2f, new Color(56, 19, 96)));
-        scene03.addObject(new Sphere(new Vector3D(-10f, 3f, 20f), 1.8f, new Color(6, 223, 215)));
-        scene03.addObject(new Sphere(new Vector3D(-20f, -10f, 35f), 2f, new Color(222, 255, 140)));
-        scene03.addObject(new Sphere(new Vector3D(10f, 15f, 35f), 2.5f, new Color(255, 204, 0)));
-        scene03.addObject(new Sphere(new Vector3D(-5f, 10f, 30f), 2f, new Color(92, 119, 87)));
-        scene03.addObject(new Sphere(new Vector3D(8f,  1f, 27f), 2f, new Color(254, 170, 170)));
-        scene03.addObject(new Sphere(new Vector3D(-3f, -5.8f, 22f), 2.5f, new Color(132, 24, 24)));
-        scene03.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,80), Color.white));*/
+        scene03.addObject(new Sphere(new Vector3D(10f, -9f, 20f), 2f, new Color(56, 19, 96), new Material(0,0,0,0)));
+        scene03.addObject(new Sphere(new Vector3D(-10f, 3f, 20f), 1.8f, new Color(6, 223, 215), new Material(0,0,0,0)));
+        scene03.addObject(new Sphere(new Vector3D(-20f, -10f, 35f), 2f, new Color(222, 255, 140), new Material(0,0,0,0)));
+        scene03.addObject(new Sphere(new Vector3D(10f, 15f, 35f), 2.5f, new Color(255, 204, 0), new Material(0,0,0,0)));
+        scene03.addObject(new Sphere(new Vector3D(-5f, 10f, 30f), 2f, new Color(92, 119, 87), new Material(0,0,0,0)));
+        scene03.addObject(new Sphere(new Vector3D(8f,  1f, 27f), 2f, new Color(254, 170, 170), new Material(0,0,0,0)));
+        scene03.addObject(new Sphere(new Vector3D(-3f, -5.8f, 22f), 2.5f, new Color(132, 24, 24), new Material(0,0,0,0)));
+        scene03.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,80), Color.white, new Material(0,0,0,0)));*/
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");

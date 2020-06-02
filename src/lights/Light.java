@@ -1,6 +1,7 @@
 package Lights;
 
 import Objects.Object3D;
+import Objects.ObjectMaterial.Material;
 import Tools.MathTools.Intersection;
 import Tools.MathTools.Ray;
 import Tools.MathTools.Vector3D;
@@ -14,10 +15,11 @@ import java.awt.*;
  */
 public abstract class Light extends Object3D {
     private double intensity;
+    private static Material material = new Material(0,0,0,0);
 
     //Constructor
     public Light(Vector3D position, Color color, double intensity){
-        super(position, color);
+        super(position, color, material);
         setIntensity(intensity);
     }
 

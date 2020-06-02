@@ -1,5 +1,6 @@
 package Tools.FileReader;
 
+import Objects.ObjectMaterial.Material;
 import Objects.Polygon;
 import Objects.Triangle;
 import Tools.MathTools.Vector3D;
@@ -30,7 +31,7 @@ public abstract class OBJReader {
      * @param color
      * @return Polygon
      */
-    public static Polygon GetPolygon(String path, Vector3D origin, Color color) {
+    public static Polygon GetPolygon(String path, Vector3D origin, Color color, Material material) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
 
@@ -169,7 +170,7 @@ public abstract class OBJReader {
                 }
             }
 
-            return new Polygon(origin, triangles.toArray(new Triangle[triangles.size()]), color);
+            return new Polygon(origin, triangles.toArray(new Triangle[triangles.size()]), color, material);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(OBJReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
