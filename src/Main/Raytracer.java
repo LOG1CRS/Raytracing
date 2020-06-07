@@ -45,16 +45,16 @@ public class Raytracer {
         scene01.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1200, 1200, 0f, 100f));
         scene01.addLight(new PointLight(new Vector3D(0f, 15f, -10f), Color.WHITE, 7));
         //scene01.addLight(new PointLight(new Vector3D(0f, 0f, -25f), Color.WHITE, 9));
-        scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, new Color(28, 108, 169), new Material(1,3f)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227), new Material(1,2f)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white, new Material(1,1f)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white, new Material(1,1f)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27), new Material(3,2f)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205), new Material(1,2f)));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white, new Material(1,1f)));
-        //scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN, new Material(3,1)));
-        //scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED, new Material(3,1)));
-        //scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white, new Material(1,1)));
+        scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, new Color(28, 108, 169), new Material(5f,5f, 1.5f, "reflective")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227), new Material(1f,2f, 1f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white, new Material(1f,1f,1f,"reflective")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white, new Material(1f,1f,1f,"reflective")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27), new Material(3f,2f,1f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205), new Material(1f,2f,1f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white, new Material(1f,1f,1f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN, new Material(3,1, 1f, "lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED, new Material(3,1, 1f, "lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white, new Material(1,1, 2f, "lambert")));
 
         //Design 2
         /*Scene scene02 = new Scene();
@@ -167,10 +167,19 @@ public class Raytracer {
                     pixelColor = Color.BLACK;
                     for (Light light : lights) {
 
+                        //Intensity & FallOff calculations
                         float nDotL = light.getNDotL(closestIntersection);
                         float intensity = (float) light.getIntensity() * nDotL;
                         double fallOff = light.getIntensity(light.getPosition(), closestIntersection.getPosition());
-                        double specular = Material.getSpecular(light, closestIntersection, mainCamera.getPosition());
+
+                        //Specular calculation
+                        double specular = Material.calculateSpecular(light, closestIntersection, mainCamera.getPosition());
+
+                        //Reflection
+                        float[] reflectiveColor = {1f, 1f, 1f};
+                        if(closestIntersection.getObject().getMaterial().getMaterialType() == "reflective"){
+                            reflectiveColor = Material.calculateReflection(mainCamera.getPosition(), closestIntersection, objects);
+                        }
 
                         Color lightColor = light.getColor();
                         Color objColor = closestIntersection.getObject().getColor();
@@ -179,7 +188,7 @@ public class Raytracer {
                         float[] objColors = new float[]{((objColor.getRed() * diffuseMaterialValue) / 255.0f), (objColor.getGreen() * diffuseMaterialValue)/ 255.0f, (objColor.getBlue() * diffuseMaterialValue) / 255.0f};
 
                         for (int colorIndex = 0; colorIndex < objColors.length; colorIndex++) {
-                            objColors[colorIndex] *= intensity * fallOff * lightColors[colorIndex] * specular;
+                            objColors[colorIndex] *= intensity * fallOff * reflectiveColor[colorIndex] * lightColors[colorIndex] * specular;
                         }
 
                         //This ray will come out from the position of the light
@@ -248,7 +257,7 @@ public class Raytracer {
      * @param caster
      * @return the closest intersection
      */
-    private static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] clippingPlanes) {
+    public static Intersection raycast(Ray ray, ArrayList<Object3D> objects, Object3D caster, float[] clippingPlanes) {
         Intersection closestIntersection = null;
 
         for (int k = 0; k < objects.size(); k++) {
