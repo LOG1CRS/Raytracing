@@ -15,7 +15,6 @@ import java.awt.*;
 public class Sphere extends Object3D {
 
     private float radius;
-    private Material material;
 
     //Constructor
     public Sphere(Vector3D position, float radius, Color color, Material material) {

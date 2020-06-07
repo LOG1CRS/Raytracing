@@ -43,7 +43,7 @@ public class RunTimeCalculator {
 
             String[] divideTime = secondsInMinutes.split(Pattern.quote("."));
             String minutes = divideTime[0];
-            String secondsDivided = divideTime[1].substring(0, 2);
+            String secondsDivided = divideTime[1].substring(0, 1);
 
             time = time + minutes + " minutes " + secondsDivided + " seconds";
         }else{

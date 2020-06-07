@@ -6,42 +6,22 @@ package Objects.ObjectMaterial;
  *  @author LOG1CRS
  */
 public class Material {
-    private double Ambient;
     private double Diffuse;
-    private double Specular;
     private double Shininess;
 
     //Constructor
-    public Material(double ambient, double diffuse, double specular, double shininess) {
-        setAmbient(ambient);
+    public Material(double diffuse, double shininess) {
         setDiffuse(diffuse);
-        setSpecular(specular);
         setShininess(shininess);
     }
 
     //Getters & Setters
-    public double getAmbient() {
-        return Ambient;
-    }
-
-    public void setAmbient(double ambient) {
-        Ambient = ambient;
-    }
-
     public double getDiffuse() {
         return Diffuse;
     }
 
     public void setDiffuse(double diffuse) {
         Diffuse = diffuse;
-    }
-
-    public double getSpecular() {
-        return Specular;
-    }
-
-    public void setSpecular(double specular) {
-        Specular = specular;
     }
 
     public double getShininess() {
