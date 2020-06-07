@@ -1,5 +1,9 @@
 package Objects.ObjectMaterial;
 
+import Lights.Light;
+import Tools.MathTools.Intersection;
+import Tools.MathTools.Vector3D;
+
 /**
  *  Material Class, this class contains the 4 bias values that allows create Blinn-phong reflection
  *  (ambient, diffuse, specular, shininess).
@@ -33,8 +37,24 @@ public class Material {
     }
 
 
-    public static float[] calculateReflection(){
-        float[] reflection = new float[0];
-        return reflection;
+    /**
+     * getSpecular, calculates the third variable (specular) according the Blinn-phong calculation.
+     *
+     * @param light
+     * @param closesIntersection
+     * @param cameraPosition
+     * @return Specular value
+     */
+    public static double getSpecular(Light light, Intersection closesIntersection, Vector3D cameraPosition){
+        double shininess = closesIntersection.getObject().getMaterial().getShininess();
+        Vector3D lightNormalize = Vector3D.normalize(light.getPosition());
+        Vector3D intersectionNormalize = Vector3D.normalize(cameraPosition);
+        Vector3D lightPlusView = Vector3D.normalize(Vector3D.sum(lightNormalize, intersectionNormalize));
+
+        double magnitudeLightPlusView = Vector3D.magnitude(lightPlusView);
+        Vector3D H = Vector3D.normalize(Vector3D.scalarMultiplication(lightPlusView, magnitudeLightPlusView));
+        double specular = Math.pow((Vector3D.dotProduct(H, closesIntersection.getNormal())), shininess);
+
+        return specular;
     }
 }

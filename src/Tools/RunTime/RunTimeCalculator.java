@@ -43,9 +43,9 @@ public class RunTimeCalculator {
 
             String[] divideTime = secondsInMinutes.split(Pattern.quote("."));
             String minutes = divideTime[0];
-            String secondsDivided = divideTime[1].substring(0, 1);
+            int secondsDivided = Integer.parseInt(divideTime[1].substring(0, 2));
 
-            time = time + minutes + " minutes " + secondsDivided + " seconds";
+            time = time + minutes + " minutes " + ((secondsDivided * 60)/100) + " seconds";
         }else{
             time = time + totalSeconds + " seconds";
         }

@@ -35,10 +35,10 @@ public abstract class Light extends Object3D {
      * @param intersectionPosition
      * @return the amount of light an object will have
      */
-   /* public double getIntensity(Vector3D lightPosition, Vector3D intersectionPosition) {
-        double distance = Math.sqrt(Math.pow((intersectionPosition.getX() - lightPosition.getX()), 2) + Math.pow((intersectionPosition.getY() - lightPosition.getY()), 2) + Math.pow((intersectionPosition.getZ() - lightPosition.getZ()), 2));
-        return (intensity / (Math.pow(distance, 2)));
-    }*/
+   public double getIntensity(Vector3D lightPosition, Vector3D intersectionPosition) {
+       double distance = Math.sqrt(Math.pow(lightPosition.getX() - intersectionPosition.getX(),2)+Math.pow(lightPosition.getY() - intersectionPosition.getY(),2)+Math.pow(lightPosition.getZ() - intersectionPosition.getZ(),2));
+       return (intensity/Math.pow(distance, 1));
+    }
 
 
     public void setIntensity(double intensity) {
