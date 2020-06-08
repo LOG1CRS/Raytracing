@@ -15,7 +15,7 @@ import java.awt.*;
  */
 public abstract class Light extends Object3D {
     private double intensity;
-    private static Material material = new Material(0,0, 0, "");
+    private static Material material = new Material(0,0,"");
 
     //Constructor
     public Light(Vector3D position, Color color, double intensity){
@@ -35,7 +35,7 @@ public abstract class Light extends Object3D {
      * @param intersectionPosition
      * @return the amount of light an object will have
      */
-   public double getIntensity(Vector3D lightPosition, Vector3D intersectionPosition) {
+   public double getIntensity(Vector3D lightPosition, Vector3D intersectionPosition, float intensity) {
        double distance = Math.sqrt(Math.pow(lightPosition.getX() - intersectionPosition.getX(),2)+Math.pow(lightPosition.getY() - intersectionPosition.getY(),2)+Math.pow(lightPosition.getZ() - intersectionPosition.getZ(),2));
        return (intensity/Math.pow(distance, 1));
     }

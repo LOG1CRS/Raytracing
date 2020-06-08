@@ -44,42 +44,45 @@ public class Raytracer {
         Scene scene01 = new Scene();
         scene01.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1200, 1200, 0f, 100f));
         scene01.addLight(new PointLight(new Vector3D(0f, 15f, -10f), Color.WHITE, 7));
-        //scene01.addLight(new PointLight(new Vector3D(0f, 0f, -25f), Color.WHITE, 9));
-        scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, new Color(28, 108, 169), new Material(5f,5f, 1.5f, "reflective")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227), new Material(1f,2f, 1f,"lambert")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white, new Material(1f,1f,1f,"reflective")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white, new Material(1f,1f,1f,"reflective")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27), new Material(3f,2f,1f,"lambert")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205), new Material(1f,2f,1f,"lambert")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white, new Material(1f,1f,1f,"lambert")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN, new Material(3,1, 1f, "lambert")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED, new Material(3,1, 1f, "lambert")));
-        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white, new Material(1,1, 2f, "lambert")));
+        scene01.addLight(new PointLight(new Vector3D(7.5f, 0f, -10f), Color.WHITE, 6));
+        scene01.addLight(new PointLight(new Vector3D(-7.5f, 0f, -10f), Color.WHITE, 6));
+        scene01.addObject(new Sphere(new Vector3D(-10f, -14f, 28f), 3.5f, Color.white, new Material(2f,4f, "reflective")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-11,2, 40), new Color(169,217,227), new Material(1f,2f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Stand.obj", new Vector3D(-8,-18,40), Color.white, new Material(1f,1f,"reflective")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Cube.obj", new Vector3D(7,-30,30), Color.white, new Material(1f,1f,"reflective")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Ring.obj", new Vector3D(0,-14,28), new Color(255, 164, 27), new Material(1f,2f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(7f, -8f, 30f), new Color(255, 243, 205), new Material(2f,5f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,30), Color.white, new Material(1f,1f,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(20,-10,20), Color.GREEN, new Material(3,1,"lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall.obj", new Vector3D(-20,-10,20), Color.RED, new Material(3,1, "lambert")));
+        scene01.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,48), Color.white, new Material(1,1, "lambert")));
 
         //Design 2
         /*Scene scene02 = new Scene();
-        scene02.setCamera(new Camera(new Vector3D(0, -1, -5.5), 135, 135, 1024, 1024, 0f, 100f));
-        scene02.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
-        scene02.addObject(new Sphere(new Vector3D(0f, -5.8f, 20f), 2.5f, new Color(200, 25, 8), new Material(0,0,0,0)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(0,-16,20), new Color(158, 131, 87), new Material(0,0,0,0)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(13f, -8f, 27f), new Color(255, 243, 205), new Material(0,0,0,0)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(13,-16,27), new Color(158, 131, 87), new Material(0,0,0,0)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-16,-13, 30), new Color(169,217,227), new Material(0,0,0,0)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(-13,-16,27), new Color(158, 131, 87), new Material(0,0,0,0)));
-        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,70), Color.white, new Material(0,0,0,0)));*/
+        scene02.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1200, 1200, 0f, 100f));
+        scene02.addLight(new PointLight(new Vector3D(-7f, 7f, -10f), Color.WHITE, 12.5));
+        scene02.addObject(new Sphere(new Vector3D(0f, -5.7f, 28f), 3f, Color.lightGray, new Material(2,1,"reflective")));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(0,-16.5,28), new Color(143, 68, 37), new Material(1,1,"lambert")));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/SmallTeapot.obj", new Vector3D(12.7f, -7.5f, 32f), new Color(255, 243, 205), new Material(0.4,0.4,"lambert")));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(13,-16,32), new Color(143, 68, 37), new Material(1,1,"lambert")));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/VWBug.obj", new Vector3D(-15,-13, 31), new Color(169,217,227), new Material(0.2,0.2,"lambert")));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Pedestal.obj", new Vector3D(-13,-16,32), new Color(143, 68, 37), new Material(1,1,"lambert")));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,40), Color.white, new Material(1f,1f,"lambert")));
+        scene02.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,58), new Color(136,136,136), new Material(1,1, "lambert")));*/
 
         //Design 3
         /*Scene scene03 = new Scene();
-        scene03.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1024, 1024, 0f, 100f));
-        scene03.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
-        scene03.addObject(new Sphere(new Vector3D(10f, -9f, 20f), 2f, new Color(56, 19, 96), new Material(0,0,0,0)));
-        scene03.addObject(new Sphere(new Vector3D(-10f, 3f, 20f), 1.8f, new Color(6, 223, 215), new Material(0,0,0,0)));
-        scene03.addObject(new Sphere(new Vector3D(-20f, -10f, 35f), 2f, new Color(222, 255, 140), new Material(0,0,0,0)));
-        scene03.addObject(new Sphere(new Vector3D(10f, 15f, 35f), 2.5f, new Color(255, 204, 0), new Material(0,0,0,0)));
-        scene03.addObject(new Sphere(new Vector3D(-5f, 10f, 30f), 2f, new Color(92, 119, 87), new Material(0,0,0,0)));
-        scene03.addObject(new Sphere(new Vector3D(8f,  1f, 27f), 2f, new Color(254, 170, 170), new Material(0,0,0,0)));
-        scene03.addObject(new Sphere(new Vector3D(-3f, -5.8f, 22f), 2.5f, new Color(132, 24, 24), new Material(0,0,0,0)));
-        scene03.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,80), Color.white, new Material(0,0,0,0)));*/
+        scene03.setCamera(new Camera(new Vector3D(0, 0.5, -5.5), 135, 135, 1200, 1200, 0f, 100f));
+        scene03.addLight(new PointLight(new Vector3D(7f, 7f, -10f), Color.WHITE, 12));scene03.addLight(new PointLight(new Vector3D(0f, 0f, -15f), Color.WHITE, 35));
+        scene03.addObject(new Sphere(new Vector3D(10f, -9f, 20f), 2f, new Color(56, 19, 96), new Material(1,1,"reflective")));
+        scene03.addObject(new Sphere(new Vector3D(-10f, 3f, 20f), 1.8f, new Color(6, 223, 215), new Material(1,1,"reflective")));
+        scene03.addObject(new Sphere(new Vector3D(-20f, -10f, 35f), 2f, new Color(48, 57, 96), new Material(1,1,"reflective")));
+        scene03.addObject(new Sphere(new Vector3D(10f, 15f, 35f), 2.5f, new Color(255, 204, 0), new Material(1,1,"reflective")));
+        scene03.addObject(new Sphere(new Vector3D(-5f, 10f, 30f), 2f, new Color(35, 88, 83), new Material(1,1,"reflective")));
+        scene03.addObject(new Sphere(new Vector3D(8f,  1f, 27f), 2f, new Color(254, 170, 170), new Material(1,1,"reflective")));
+        scene03.addObject(new Sphere(new Vector3D(-3f, -5.8f, 22f), 2.5f, new Color(132, 24, 24), new Material(1,1,"reflective")));
+        scene03.addObject(OBJReader.GetPolygon("ObjFiles/Floor.obj", new Vector3D(0,-18.3,40), Color.white, new Material(1f,1f,"lambert")));
+        scene03.addObject(OBJReader.GetPolygon("ObjFiles/Wall2.obj", new Vector3D(0,-5,58), new Color(7,7,7), new Material(1,1, "lambert")));*/
 
         BufferedImage image = raytrace(scene01);
         File outputImage = new File("image.png");
@@ -167,18 +170,26 @@ public class Raytracer {
                     pixelColor = Color.BLACK;
                     for (Light light : lights) {
 
+                        //float[] finalColors = new float[3];
+
                         //Intensity & FallOff calculations
                         float nDotL = light.getNDotL(closestIntersection);
                         float intensity = (float) light.getIntensity() * nDotL;
-                        double fallOff = light.getIntensity(light.getPosition(), closestIntersection.getPosition());
+                        double fallOff = light.getIntensity(light.getPosition(), closestIntersection.getPosition(), intensity);
 
                         //Specular calculation
                         double specular = Material.calculateSpecular(light, closestIntersection, mainCamera.getPosition());
 
-                        //Reflection
+                        //Reflection calculation
                         float[] reflectiveColor = {1f, 1f, 1f};
                         if(closestIntersection.getObject().getMaterial().getMaterialType() == "reflective"){
                             reflectiveColor = Material.calculateReflection(mainCamera.getPosition(), closestIntersection, objects);
+                        }
+
+                        //Refraction calculation
+                        float[] refractiveColor = {1f, 1f, 1f};
+                        if(closestIntersection.getObject().getMaterial().getMaterialType() == "refractive"){
+                            refractiveColor = Material.calculateRefraction(mainCamera.getPosition(), ray, closestIntersection, objects);
                         }
 
                         Color lightColor = light.getColor();
@@ -188,9 +199,10 @@ public class Raytracer {
                         float[] objColors = new float[]{((objColor.getRed() * diffuseMaterialValue) / 255.0f), (objColor.getGreen() * diffuseMaterialValue)/ 255.0f, (objColor.getBlue() * diffuseMaterialValue) / 255.0f};
 
                         for (int colorIndex = 0; colorIndex < objColors.length; colorIndex++) {
-                            objColors[colorIndex] *= intensity * fallOff * reflectiveColor[colorIndex] * lightColors[colorIndex] * specular;
+                            objColors[colorIndex] *= intensity * fallOff * reflectiveColor[colorIndex] * lightColors[colorIndex] * specular * refractiveColor[colorIndex];
                         }
 
+                        //Shadows calculation
                         //This ray will come out from the position of the light
                         Ray shadowRay = new Ray(closestIntersection.getPosition(), light.getPosition());
                         Intersection rayShadowIntersection = raycast(shadowRay, objects, closestIntersection.getObject(), new float[]{cameraZ + nearFarPlanes[0], cameraZ + nearFarPlanes[1]});
@@ -227,7 +239,7 @@ public class Raytracer {
      * @param max
      * @return min or max value
      */
-    private static float clamp(float value, float min, float max) {
+    public static float clamp(float value, float min, float max) {
         if (value < min) {
             return min;
         }

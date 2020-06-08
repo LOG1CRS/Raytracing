@@ -85,6 +85,16 @@ public class Vector3D {
     }
 
     /**
+     * Sum for a scalar value
+     * @param vectorA
+     * @param value
+     * @return Vector3D the result of the sum between vector and scalar value
+     */
+    public static Vector3D sum(Vector3D vectorA, float value){
+        return new Vector3D(vectorA.getX() + value, vectorA.getY() + value, vectorA.getZ() + value);
+    }
+
+    /**
      * Subtraction of two vectors.
      * @param vectorA
      * @param vectorB

@@ -1,8 +1,10 @@
 package Objects.ObjectMaterial;
 
 import Lights.Light;
+import Lights.PointLight;
 import Main.Raytracer;
 import Objects.Object3D;
+import Objects.Sphere;
 import Tools.MathTools.Intersection;
 import Tools.MathTools.Ray;
 import Tools.MathTools.Vector3D;
@@ -17,14 +19,12 @@ import java.util.ArrayList;
 public class Material {
     private double Diffuse;
     private double Shininess;
-    private double Refraction;
     private String MaterialType;
 
     //Constructor
-    public Material(double diffuse, double shininess, double Refraction, String MaterialType) {
+    public Material(double diffuse, double shininess, String MaterialType) {
         setDiffuse(diffuse);
         setShininess(shininess);
-        setRefraction(Refraction);
         setMaterialType(MaterialType);
     }
 
@@ -43,14 +43,6 @@ public class Material {
 
     public void setShininess(double shininess) {
         Shininess = shininess;
-    }
-
-    public double getRefraction() {
-        return Refraction;
-    }
-
-    public void setRefraction(double refraction) {
-        Refraction = refraction;
     }
 
     public String getMaterialType() {
@@ -112,9 +104,54 @@ public class Material {
         return reflectiveColor;
     }
 
-    public static double calculateRefraction(){
-        double refraction = 0;
+    /**
+     *
+     * @param viewer
+     * @param ray
+     * @param closestIntersection
+     * @param objects
+     * @return
+     */
+    public static float[] calculateRefraction(Vector3D viewer, Ray ray, Intersection closestIntersection,  ArrayList<Object3D> objects){
+        //Method #1 failed
+        /*Vector3D V = ray.getDirection();
+        Vector3D P = closestIntersection.getPosition();
+        Vector3D N = closestIntersection.getNormal();
+        double C1 = Vector3D.dotProduct(closestIntersection.getNormal(), V);
+        double C2 = Math.sqrt((1.0f - (C1 * C1)));
+        Vector3D refractionVector = Vector3D.sum(V, Vector3D.scalarMultiplication(N, C1-C2));*/
 
-        return refraction;
+        /*float refractionIndex = 1.4f;
+        Vector3D finalValue;
+
+        //method #2 failed
+        float cosi = Raytracer.clamp(-1, 1, (float) Vector3D.dotProduct(closestIntersection.getPosition(), closestIntersection.getNormal()));
+        float etai = 5, etat = refractionIndex;
+        float eta = etai / etat;
+        float k = 1 - eta * eta * (1 - cosi * cosi);
+        if(k < 0){
+            finalValue = Vector3D.ZERO();
+        } else{
+            Vector3D intersectionEta = Vector3D.scalarMultiplication(closestIntersection.getPosition(), eta);
+            double etaCosi = ((eta * cosi) - Math.sqrt(k));
+            Vector3D normalEtaCosiK = Vector3D.scalarMultiplication(closestIntersection.getNormal(), etaCosi);
+            finalValue = Vector3D.sum(normalEtaCosiK, intersectionEta);
+        }*/
+
+        float[] refractiveColor = {0f, 0f, 0f};
+
+        //Try to make an object transparent
+        Ray refractionRay = new Ray(closestIntersection.getPosition(), ray.getDirection());
+        Intersection refractionIntersection = Raytracer.raycast(refractionRay, objects, closestIntersection.getObject(), null);
+
+        if (refractionIntersection != null && closestIntersection.getObject() != refractionIntersection.getObject()){
+            System.out.println(refractiveColor);
+            refractiveColor[0] = refractionIntersection.getObject().getColor().getRed()/255.0f;
+            refractiveColor[1] = refractionIntersection.getObject().getColor().getGreen()/255.0f;
+            refractiveColor[2] = refractionIntersection.getObject().getColor().getBlue()/255.0f;
+        }
+
+
+        return refractiveColor;
     }
 }
