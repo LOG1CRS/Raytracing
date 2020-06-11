@@ -10,7 +10,7 @@ You can clone or download the project and run it with IntelliJ IDEA, NETBEANS or
 
 ## Image Rendered
 
-![](https://raw.githubusercontent.com/LOG1CRS/Raytracing-Engine/v0.8/image.png)
+![](https://raw.githubusercontent.com/LOG1CRS/Raytracing-Engine/master/image.png)
 
 ## Features
 
@@ -25,9 +25,12 @@ You can clone or download the project and run it with IntelliJ IDEA, NETBEANS or
 	 - Directional light
 	 - Point light
  - Clipping planes
- - Phong shading 
+ - Blinn-phong
  - Light falloff
  - Raycast
+ - Multithreading 
+ - Shadows
+ - Reflection
  - Render an image
   
 ## Built With
@@ -52,7 +55,7 @@ If you want to see the progress of the project in a more visual way, you can sel
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/LOG1CRS/Raytracing/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/LOG1CRS/Raytracing/blob/master/LICENSE) file for more details.
 
 ## What did I learned from this project?
 
